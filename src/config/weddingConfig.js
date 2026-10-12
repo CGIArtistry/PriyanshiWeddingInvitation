@@ -8,7 +8,7 @@
  */
 
 // Import image assets directly so Vite bundles them with correct relative paths for GitHub Pages & Vercel
-import bubbleCouple from "../assets/images/bubble_couple.jpg";
+import bubbleCouple from "../assets/images/bubble_couple.png";
 import heroCouple from "../assets/images/hero_couple.jpg";
 import storyOne from "../assets/images/story_one.jpg";
 import storyTwo from "../assets/images/story_two.jpg";
