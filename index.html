@@ -17,9 +17,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      // Automatically redirect to compiled dist/index.html if double-clicked from root folder in Windows File Explorer
+      if (window.location.protocol === 'file:' && !window.location.pathname.toLowerCase().includes('/dist/')) {
+        window.location.replace('./dist/index.html');
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <noscript>
+        <div style="font-family: sans-serif; text-align: center; padding: 4rem 1rem; color: #2d3748;">
+          <h2>Abhishek &amp; Priyanshi Wedding Invitation</h2>
+          <p>Please enable JavaScript or open <a href="./dist/index.html">dist/index.html</a> to view the invitation.</p>
+        </div>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
