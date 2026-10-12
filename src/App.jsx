@@ -6,7 +6,6 @@ import { OurStory } from "./components/OurStory";
 import { GalleryCarousel } from "./components/GalleryCarousel";
 import { FormalCard } from "./components/FormalCard";
 import { CeremonyCards } from "./components/CeremonyCards";
-import { RsvpSection } from "./components/RsvpSection";
 import { HeavenlyFinale } from "./components/HeavenlyFinale";
 import { AudioPlayer } from "./components/AudioPlayer";
 import { LightboxModal } from "./components/LightboxModal";
@@ -114,10 +113,7 @@ export function App() {
           {/* 8. Ceremony & Celebration Cards */}
           <CeremonyCards />
 
-          {/* 9. Blessings & RSVP Form */}
-          <RsvpSection />
-
-          {/* 10. Heavenly Finale & Footer */}
+          {/* 9. Heavenly Finale & Footer */}
           <HeavenlyFinale />
 
           {/* Floating Audio Music Controller */}
