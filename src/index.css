@@ -2062,7 +2062,71 @@ img {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--sage);
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Interactive Day Filter Tabs */
+.ceremony-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: 1050px;
+  margin: 0 auto 3.2rem;
+  padding: 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 32px rgba(22, 72, 99, 0.08), inset 0 1.5px 2px rgba(255, 255, 255, 0.9);
+}
+
+.ceremony-tab-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--teal-night);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ceremony-tab-pill .tab-pill-label {
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.ceremony-tab-pill .tab-pill-sub {
+  font-size: 0.72rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.ceremony-tab-pill:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--gold-warm);
+  transform: translateY(-2px);
+}
+
+.ceremony-tab-pill.is-active {
+  background: linear-gradient(135deg, #b68d40, #d49b4b);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 22px rgba(182, 141, 64, 0.42);
+  transform: translateY(-2px);
+}
+
+.ceremony-tab-pill.is-active .tab-pill-label,
+.ceremony-tab-pill.is-active .tab-pill-sub {
+  color: #fff;
 }
 
 .arch-cards-grid {
@@ -2070,8 +2134,8 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 3rem;
-  max-width: 1050px;
+  gap: 2.4rem;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -2080,10 +2144,10 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: clamp(330px, 45vw, 460px);
-  min-height: 670px;
-  padding: 4rem 2.4rem 2.6rem;
-  border-radius: 220px 220px 36px 36px;
+  width: clamp(310px, 30vw, 380px);
+  min-height: 640px;
+  padding: 3.6rem 2.2rem 2.4rem;
+  border-radius: 200px 200px 32px 32px;
   overflow: hidden;
   text-align: center;
   backdrop-filter: blur(24px) saturate(190%);
@@ -2101,7 +2165,7 @@ img {
   position: absolute;
   inset: 12px;
   border: 1px dashed rgba(255, 255, 255, 0.45);
-  border-radius: 205px 205px 24px 24px;
+  border-radius: 185px 185px 22px 22px;
   pointer-events: none;
   z-index: 0;
 }
@@ -2137,47 +2201,93 @@ img {
 }
 
 .arch-card:hover {
-  transform: translateY(-14px) scale(1.015);
+  transform: translateY(-12px) scale(1.015);
   box-shadow: 0 35px 75px -15px rgba(22, 72, 99, 0.25);
 }
 
-/* 1. Haldi, Mehendi & Sangeet Card (Warm Gold, Saffron & Frosted Glass) */
-.card-haldi {
-  background: linear-gradient(155deg, rgba(255, 248, 220, 0.94) 0%, rgba(255, 224, 130, 0.9) 45%, rgba(245, 166, 35, 0.92) 100%);
+/* 1. Khal Mitti (Earthy Terracotta Gold & Champagne) */
+.card-khalmitti {
+  background: linear-gradient(155deg, rgba(255, 248, 238, 0.96) 0%, rgba(254, 233, 210, 0.94) 50%, rgba(230, 168, 115, 0.94) 100%);
   color: #4a2100;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
+.card-khalmitti .arch-graphic, .card-khalmitti .event-script-title { color: #873e00; }
+.card-khalmitti .save-the-date-tag, .card-khalmitti .day-name, .card-khalmitti .month-year { color: #6a3000; }
 
-.card-haldi:hover {
-  transform: translateY(-14px) rotate(-1deg) scale(1.015);
+/* 2. Mata Poojan & Haldi (Bright Turmeric Gold & Saffron) */
+.card-haldi {
+  background: linear-gradient(155deg, rgba(255, 248, 220, 0.95) 0%, rgba(255, 224, 130, 0.92) 48%, rgba(245, 166, 35, 0.94) 100%);
+  color: #4a2100;
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
+.card-haldi .arch-graphic, .card-haldi .event-script-title { color: #7a3100; }
+.card-haldi .save-the-date-tag, .card-haldi .day-name, .card-haldi .month-year { color: #5c2500; }
 
-.card-haldi .arch-graphic, .card-haldi .event-script-title {
-  color: #7a3100;
+/* 3. Mandap (Marigold Orange & Sandalwood Amber) */
+.card-mandap {
+  background: linear-gradient(155deg, rgba(255, 246, 235, 0.96) 0%, rgba(255, 218, 160, 0.93) 52%, rgba(235, 145, 60, 0.94) 100%);
+  color: #481e00;
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
+.card-mandap .arch-graphic, .card-mandap .event-script-title { color: #8c3800; }
+.card-mandap .save-the-date-tag, .card-mandap .day-name, .card-mandap .month-year { color: #6e2c00; }
 
-.card-haldi .save-the-date-tag, .card-haldi .day-name, .card-haldi .month-year {
-  color: #5c2500;
+/* 4. Maayan Poojan (Auspicious Vermilion Rose & Ivory) */
+.card-poojan {
+  background: linear-gradient(155deg, rgba(255, 245, 245, 0.96) 0%, rgba(255, 215, 220, 0.94) 50%, rgba(220, 115, 130, 0.94) 100%);
+  color: #440a15;
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
+.card-poojan .arch-graphic, .card-poojan .event-script-title { color: #85182a; }
+.card-poojan .save-the-date-tag, .card-poojan .day-name, .card-poojan .month-year { color: #630f1d; }
 
-/* 2. Baraat & Shubh Vivah Card (Deep Royal Velvet Burgundy & Gold) */
+/* 5. Mamera / Mayra (Royal Emerald & Golden Silk) */
+.card-mamera {
+  background: linear-gradient(155deg, rgba(240, 253, 246, 0.96) 0%, rgba(200, 242, 220, 0.94) 48%, rgba(85, 175, 130, 0.94) 100%);
+  color: #0b3820;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+}
+.card-mamera .arch-graphic, .card-mamera .event-script-title { color: #0f5230; }
+.card-mamera .save-the-date-tag, .card-mamera .day-name, .card-mamera .month-year { color: #0b4025; }
+
+/* 6. Mahila Sangeet (Deep Starlight Indigo & Shimmering Gold) */
+.card-sangeet {
+  background: linear-gradient(155deg, rgba(30, 24, 75, 0.96) 0%, rgba(20, 15, 55, 0.97) 50%, rgba(10, 8, 35, 0.98) 100%);
+  color: #f7f3ff;
+  border: 1px solid rgba(230, 195, 120, 0.65);
+}
+.card-sangeet .arch-graphic, .card-sangeet .event-script-title { color: #ffd680; }
+.card-sangeet .save-the-date-tag, .card-sangeet .day-name, .card-sangeet .month-year { color: #e6b8ff; }
+.card-sangeet .time-pill-badge { background: rgba(255, 255, 255, 0.12); color: #ffd680; }
+
+/* 7. Sagai / Ring Ceremony (Sparkling Rose Champagne & Gold) */
+.card-sagai {
+  background: linear-gradient(155deg, rgba(255, 248, 245, 0.96) 0%, rgba(250, 225, 215, 0.94) 50%, rgba(220, 150, 140, 0.94) 100%);
+  color: #421815;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+}
+.card-sagai .arch-graphic, .card-sagai .event-script-title { color: #852d27; }
+.card-sagai .save-the-date-tag, .card-sagai .day-name, .card-sagai .month-year { color: #6b221d; }
+
+/* 8. Var Nikasi / Baraat (Royal Ruby Crimson, Vermilion & Gold) */
+.card-baraat {
+  background: linear-gradient(155deg, rgba(125, 20, 35, 0.96) 0%, rgba(85, 10, 25, 0.97) 52%, rgba(55, 5, 15, 0.98) 100%);
+  color: #fff6ed;
+  border: 1px solid rgba(245, 214, 142, 0.6);
+}
+.card-baraat .arch-graphic, .card-baraat .event-script-title { color: #ffd166; }
+.card-baraat .save-the-date-tag, .card-baraat .day-name, .card-baraat .month-year { color: #ffb703; }
+.card-baraat .time-pill-badge { background: rgba(255, 255, 255, 0.12); color: #ffd166; }
+
+/* 9. Shubh Vivah & Paanigrahan (Deep Royal Velvet Burgundy & Gold) */
 .card-matrimony {
   background: linear-gradient(155deg, rgba(92, 24, 34, 0.96) 0%, rgba(55, 6, 23, 0.97) 55%, rgba(31, 3, 12, 0.98) 100%);
   color: #fdf6ee;
-  border: 1px solid rgba(245, 214, 142, 0.55);
+  border: 1px solid rgba(245, 214, 142, 0.6);
 }
-
-.card-matrimony:hover {
-  transform: translateY(-14px) rotate(1deg) scale(1.015);
-}
-
-.card-matrimony .arch-graphic, .card-matrimony .event-script-title {
-  color: #ffd166;
-}
-
-.card-matrimony .save-the-date-tag, .card-matrimony .day-name, .card-matrimony .month-year {
-  color: #ffd166;
-}
+.card-matrimony .arch-graphic, .card-matrimony .event-script-title { color: #ffd166; }
+.card-matrimony .save-the-date-tag, .card-matrimony .day-name, .card-matrimony .month-year { color: #ffd166; }
+.card-matrimony .time-pill-badge { background: rgba(255, 255, 255, 0.12); color: #ffd166; }
 
 .arch-graphic {
   display: flex;
@@ -2200,10 +2310,12 @@ img {
 }
 
 .event-script-title {
-  font-family: var(--script);
-  font-size: clamp(3.2rem, 8vw, 4rem);
-  line-height: 1.1;
-  margin: 0.4rem 0;
+  font-family: "Rozha One", var(--display), serif;
+  font-size: clamp(2rem, 5.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0.5rem 0 0.3rem;
+  letter-spacing: 0.02em;
 }
 
 .event-subtitle-tag {
@@ -2787,7 +2899,8 @@ footer strong {
     padding: 3rem 1.5rem 2rem;
   }
   .event-script-title {
-    font-size: 3.2rem;
+    font-size: 2.15rem;
+    line-height: 1.25;
   }
   .floating-audio-pill {
     bottom: 1.2rem;
