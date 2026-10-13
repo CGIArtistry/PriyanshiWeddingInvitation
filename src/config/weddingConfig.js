@@ -24,6 +24,8 @@ import sliding04 from "../assets/images/sliding_04.jpg";
 import sliding05 from "../assets/images/sliding_05.jpg";
 import sliding06 from "../assets/images/sliding_06.jpg";
 import sliding07 from "../assets/images/sliding_07.jpg";
+import weddingLogo from "../assets/images/wedding_logo.png";
+import saveTheDateBg from "../assets/images/save_the_date_bg.jpg";
 
 export const weddingConfig = {
   // Couple & Family Lineage
@@ -105,6 +107,8 @@ export const weddingConfig = {
     envelopeHint: "A Sacred Celebration Awaits",
     ceremonyTitle: "Baraat & Shubh Vivah",
     buttonItinerary: "View Complete Itinerary",
+    logo: weddingLogo,
+    bgImage: saveTheDateBg,
   },
 
   // Our Story ("A Promise Kept")
@@ -130,24 +134,76 @@ export const weddingConfig = {
     },
   },
 
-  // Formal Invitation Card
+  // Formal Invitation Card (Bilingual: Hindi & English)
   formalCard: {
-    sacredInvocation: "॥ श्री गणेशाय नमः ॥",
-    title: "Wedding Invitation · विवाह निमंत्रण",
-    hostIntroText: "परम पूज्य कुलदेवता, पितरों एवं अग्रजों के असीम आशीर्वाद से,",
-    familyNamesPlaceholder: "पाल एवं शर्मा परिवार",
-    cordialMessage: "आपको हमारे प्रिय पुत्र एवं पुत्री के शुभ विवाह में सादर आमंत्रित करते हैं",
-    blessingQuote: "“May your journey be filled with wisdom, devotion, and boundless love.”",
-    blessingCitation: "Seven Sacred Vows · Saptapadi",
-    venuePlaceholder: "सृष्टि रिसॉर्ट एंड क्लब, एबी रोड, देवास",
-    timingsPlaceholder: "08 से 12 दिसम्बर 2026 · समस्त मांगलिक कार्यक्रम",
-    contactPlaceholder: "Rahul Pal (7566125977) · Rohit Pal (8109123787) · Jitendra Sharma (8305158826)",
+    mapUrl: "https://maps.app.goo.gl/Xyuxn4DUoihz3x1j7",
     contacts: [
       { name: "Rahul Pal", phone: "7566125977", tel: "+917566125977" },
       { name: "Rohit Pal", phone: "8109123787", tel: "+918109123787" },
       { name: "Jitendra Sharma", phone: "8305158826", tel: "+918305158826" },
     ],
-    mapUrl: "https://maps.app.goo.gl/Xyuxn4DUoihz3x1j7",
+    // 1. Traditional Hindi Version
+    hi: {
+      sacredInvocation: "॥ श्री गणेशाय नमः ॥",
+      title: "विवाह निमंत्रण",
+      hostIntroText: "परम पूज्य कुलदेवता, पितरों एवं अग्रजों के असीम आशीर्वाद से,",
+      familyNames: "पाल एवं शर्मा परिवार",
+      cordialMessage: "सादर एवं सस्नेह आपको अपने प्रिय बच्चों के पावन वैवाहिक उत्सव में आमंत्रित करते हैं",
+      groomSideTag: "वर पक्ष · Groom's Side",
+      groomName: "अभिषेक पाल",
+      groomGrandparentsLabel: "सुपौत्र",
+      groomGrandparents: "स्व. श्री बाबूलालजी पाल (पैंथर पहलवान) - श्रीमती पार्वती पाल",
+      groomParentsLabel: "सुपुत्र",
+      groomParents: "श्री मुकेश पाल - श्रीमती सुनीता पाल",
+      brideSideTag: "वधू पक्ष · Bride's Side",
+      brideName: "प्रियंशी शर्मा",
+      brideGrandparentsLabel: "सुपौत्री",
+      brideGrandparents: "स्व. श्री दामोदर प्रसाद जी शर्मा - स्व. श्रीमती कमलादेवी शर्मा",
+      brideParentsLabel: "सुपुत्री",
+      brideParents: "श्री जितेंद्र शर्मा - श्रीमती सीमा शर्मा",
+      wedsLigature: "परिणय सूत्र",
+      wedsSub: "संग",
+      dateLabel: "शुभ विवाह तिथि",
+      dateVal: "शनिवार, 12 दिसम्बर 2026",
+      timingsLabel: "मांगलिक कार्यक्रम",
+      timingsVal: "08 से 12 दिसम्बर 2026 · समस्त मांगलिक उत्सव",
+      venueLabel: "विवाह स्थल",
+      venueVal: "सृष्टि रिसॉर्ट एंड क्लब, एबी रोड, देवास",
+      contactLabel: "सम्पर्क एवं दर्शनाभिलाषी",
+      blessingQuote: "“माङ्गल्यं तन्तुनानेन लोकभवनाय च । गृह्णामि सुभगे कण्ठे बधान चिरजीवितम् ॥”",
+      blessingCitation: "वैदिक विवाह मंगल श्लोक · सप्तपदी",
+    },
+    // 2. Elegant English Version
+    en: {
+      sacredInvocation: "॥ Om Shri Ganeshaya Namah ॥",
+      title: "Wedding Invitation",
+      hostIntroText: "Together with the divine blessings of our ancestors, elders, and families,",
+      familyNames: "The Pal & Sharma Families",
+      cordialMessage: "cordially invite you to celebrate the joyous wedding ceremony of their beloved children",
+      groomSideTag: "Groom's Family",
+      groomName: "Abhishek Pal",
+      groomGrandparentsLabel: "Grandson of",
+      groomGrandparents: "Late Shri Babulalji Pal (Panther Pehlwan) & Smt. Parvati Pal",
+      groomParentsLabel: "Son of",
+      groomParents: "Shri Mukesh Pal & Smt. Sunita Pal",
+      brideSideTag: "Bride's Family",
+      brideName: "Priyanshi Sharma",
+      brideGrandparentsLabel: "Granddaughter of",
+      brideGrandparents: "Late Shri Damodar Prasad Sharma & Late Smt. Kamladevi Sharma",
+      brideParentsLabel: "Daughter of",
+      brideParents: "Shri Jitendra Sharma & Smt. Seema Sharma",
+      wedsLigature: "Weds",
+      wedsSub: "Together with",
+      dateLabel: "Wedding Date",
+      dateVal: "Saturday, 12 December 2026",
+      timingsLabel: "Ceremony Schedule",
+      timingsVal: "08 to 12 December 2026 · Auspicious Ceremonies",
+      venueLabel: "Wedding Venue",
+      venueVal: "Srishti Resort & Club, AB Road, Dewas",
+      contactLabel: "Contact & RSVP",
+      blessingQuote: "“Bound by sacred vows and love divine, two souls begin their timeless journey as one.”",
+      blessingCitation: "Seven Sacred Vows · Vedic Saptapadi",
+    },
   },
 
   // Contact & RSVP Direct Helplines

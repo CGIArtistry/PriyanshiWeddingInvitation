@@ -122,13 +122,32 @@ export const SaveTheDateReveal = () => {
               onClick={handleEnvelopeClick}
               aria-label="Unveil royal invitation"
             >
-              <span className="wax-seal">{couple.monogram}</span>
+              <div className="royal-wax-seal-wrapper">
+                {saveTheDate.logo ? (
+                  <img
+                    src={saveTheDate.logo}
+                    alt="Abhishek & Priyanshi Royal Wedding Logo"
+                    className="wax-seal-logo-img"
+                  />
+                ) : (
+                  <span className="wax-seal">{couple.monogram}</span>
+                )}
+              </div>
               <span className="seal-invitation-text">{saveTheDate.envelopeText}</span>
               <span className="seal-hint">{saveTheDate.envelopeHint}</span>
             </button>
           </div>
         ) : (
           <div className="revealed-content">
+            {saveTheDate.logo && (
+              <div className="revealed-wedding-logo-crest">
+                <img
+                  src={saveTheDate.logo}
+                  alt="Abhishek & Priyanshi Royal Wedding Emblem"
+                  className="revealed-wedding-logo"
+                />
+              </div>
+            )}
             <div className="label-badge">{saveTheDate.ceremonyTitle}</div>
             <h3 className="script-name">
               {couple.groom.firstName} &amp; {couple.bride.firstName}

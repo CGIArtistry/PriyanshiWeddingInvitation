@@ -1,94 +1,123 @@
-import React from "react";
+import React, { useState } from "react";
 import { weddingConfig } from "../config/weddingConfig";
-import { MapPin, Clock, Calendar, Phone } from "lucide-react";
+import { MapPin, Clock, Calendar, Phone, Languages } from "lucide-react";
 
 export const FormalCard = () => {
-  const { couple, weddingDate, formalCard } = weddingConfig;
+  const { formalCard } = weddingConfig;
+  const [lang, setLang] = useState("hi");
+
+  const c = formalCard[lang] || formalCard.hi;
 
   return (
     <section className="section-wrap" id="invitation">
       <div className="formal-card">
-        {/* Auspicious Invocation */}
-        <div className="sacred-shloka-header">{formalCard.sacredInvocation}</div>
+        {/* Language Selection Switcher */}
+        <div className="formal-lang-toolbar">
+          <div className="formal-lang-pill-group" role="tablist" aria-label="Select Invitation Language">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={lang === "hi"}
+              className={`lang-tab-pill ${lang === "hi" ? "is-active" : ""}`}
+              onClick={() => setLang("hi")}
+              title="हिन्दी संस्करण देखें"
+            >
+              <span className="lang-tab-primary">हिन्दी</span>
+              <span className="lang-tab-secondary">Hindi</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={lang === "en"}
+              className={`lang-tab-pill ${lang === "en" ? "is-active" : ""}`}
+              onClick={() => setLang("en")}
+              title="View English Version"
+            >
+              <span className="lang-tab-primary">English</span>
+              <span className="lang-tab-secondary">अंग्रेज़ी</span>
+            </button>
+          </div>
+        </div>
 
-        <div className="label-badge">{formalCard.title}</div>
+        {/* Auspicious Invocation */}
+        <div className="sacred-shloka-header">{c.sacredInvocation}</div>
+
+        <div className="label-badge">{c.title}</div>
 
         <p className="host-intro">
-          {formalCard.hostIntroText}
+          {c.hostIntroText}
           <br />
-          <strong>{formalCard.familyNamesPlaceholder}</strong>
+          <strong>{c.familyNames}</strong>
           <br />
-          <em>{formalCard.cordialMessage}</em>
+          <em>{c.cordialMessage}</em>
         </p>
 
         {/* Traditional Two-Sided Lineage & Couple Pairing */}
         <div className="formal-family-layout">
           {/* Groom's Family Side */}
           <div className="family-column groom-column">
-            <div className="family-side-tag">वर पक्ष · Groom's Family</div>
-            <h3 className="family-person-name">{couple.groom.fullName}</h3>
-            
+            <div className="family-side-tag">{c.groomSideTag}</div>
+            <h3 className="family-person-name">{c.groomName}</h3>
+
             <div className="family-kinship-card">
               <div className="kinship-row">
-                <span className="kinship-badge">{couple.groom.grandparentsLabel}</span>
-                <span className="kinship-names">{couple.groom.grandparents}</span>
+                <span className="kinship-badge">{c.groomGrandparentsLabel}</span>
+                <span className="kinship-names">{c.groomGrandparents}</span>
               </div>
               <div className="kinship-row">
-                <span className="kinship-badge">{couple.groom.parentsLabel}</span>
-                <span className="kinship-names">{couple.groom.parents}</span>
+                <span className="kinship-badge">{c.groomParentsLabel}</span>
+                <span className="kinship-names">{c.groomParents}</span>
               </div>
             </div>
           </div>
 
           {/* Central Sacred Knot / Weds Seal */}
           <div className="formal-weds-seal" aria-hidden="true">
-            <span className="weds-knot-symbol">परिणय</span>
+            <span className="weds-knot-symbol">{c.wedsLigature}</span>
             <span className="weds-ampersand">&amp;</span>
-            <span className="weds-knot-sub">WEDS</span>
+            <span className="weds-knot-sub">{c.wedsSub}</span>
           </div>
 
           {/* Bride's Family Side */}
           <div className="family-column bride-column">
-            <div className="family-side-tag">वधू पक्ष · Bride's Family</div>
-            <h3 className="family-person-name">{couple.bride.fullName}</h3>
-            
+            <div className="family-side-tag">{c.brideSideTag}</div>
+            <h3 className="family-person-name">{c.brideName}</h3>
+
             <div className="family-kinship-card">
               <div className="kinship-row">
-                <span className="kinship-badge">{couple.bride.grandparentsLabel}</span>
-                <span className="kinship-names">{couple.bride.grandparents}</span>
+                <span className="kinship-badge">{c.brideGrandparentsLabel}</span>
+                <span className="kinship-names">{c.brideGrandparents}</span>
               </div>
               <div className="kinship-row">
-                <span className="kinship-badge">{couple.bride.parentsLabel}</span>
-                <span className="kinship-names">{couple.bride.parents}</span>
+                <span className="kinship-badge">{c.brideParentsLabel}</span>
+                <span className="kinship-names">{c.brideParents}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Wedding Details Grid with Placeholders */}
+        {/* Wedding Details Grid */}
         <div className="formal-details-grid">
           <div className="formal-detail-item">
             <span className="formal-detail-label">
               <Calendar size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-              Wedding Date
+              {c.dateLabel}
             </span>
-            <span className="formal-detail-val">
-              {weddingDate.displayWeekday}, {weddingDate.displayDay} {weddingDate.displayMonth} {weddingDate.displayYear}
-            </span>
+            <span className="formal-detail-val">{c.dateVal}</span>
           </div>
 
           <div className="formal-detail-item">
             <span className="formal-detail-label">
               <Clock size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-              Ceremony Timings
+              {c.timingsLabel}
             </span>
-            <span className="formal-detail-val">{formalCard.timingsPlaceholder}</span>
+            <span className="formal-detail-val">{c.timingsVal}</span>
           </div>
 
           <div className="formal-detail-item">
             <span className="formal-detail-label">
               <MapPin size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-              Wedding Venue
+              {c.venueLabel}
             </span>
             {formalCard.mapUrl ? (
               <a
@@ -96,45 +125,43 @@ export const FormalCard = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="formal-detail-val formal-detail-link"
-                title="Open Srishti Club on Google Maps"
+                title="Open Srishti Resort & Club on Google Maps"
               >
-                {formalCard.venuePlaceholder} <span className="venue-map-badge">📍 View on Maps</span>
+                {c.venueVal} <span className="venue-map-badge">📍 {lang === "hi" ? "गूगल मैप देखें" : "View Map"}</span>
               </a>
             ) : (
-              <span className="formal-detail-val">{formalCard.venuePlaceholder}</span>
+              <span className="formal-detail-val">{c.venueVal}</span>
             )}
           </div>
 
           <div className="formal-detail-item formal-contacts-block">
             <span className="formal-detail-label">
               <Phone size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-              Contact &amp; RSVP
+              {c.contactLabel}
             </span>
             <div className="formal-contacts-list">
               {formalCard.contacts && formalCard.contacts.length > 0 ? (
-                formalCard.contacts.map((c, i) => (
+                formalCard.contacts.map((contact, i) => (
                   <a
                     key={i}
-                    href={`tel:${c.tel}`}
+                    href={`tel:${contact.tel}`}
                     className="formal-contact-pill"
-                    title={`Call ${c.name} at ${c.phone}`}
+                    title={`Call ${contact.name} at ${contact.phone}`}
                   >
-                    <span className="contact-name">{c.name}</span>
+                    <span className="contact-name">{contact.name}</span>
                     <span className="contact-sep">·</span>
-                    <span className="contact-phone">{c.phone}</span>
+                    <span className="contact-phone">{contact.phone}</span>
                   </a>
                 ))
-              ) : (
-                <span className="formal-detail-val">{formalCard.contactPlaceholder}</span>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
 
         {/* Sacred Blessing Pill */}
-        <div className="scripture-pill" style={{ margin: "2rem auto 0" }}>
-          <div className="scripture-text">{formalCard.blessingQuote}</div>
-          <div className="scripture-citation">{formalCard.blessingCitation}</div>
+        <div className="scripture-pill" style={{ margin: "2.4rem auto 0" }}>
+          <div className="scripture-text">{c.blessingQuote}</div>
+          <div className="scripture-citation">{c.blessingCitation}</div>
         </div>
       </div>
     </section>
