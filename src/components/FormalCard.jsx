@@ -21,10 +21,48 @@ export const FormalCard = () => {
           <em>{formalCard.cordialMessage}</em>
         </p>
 
-        <div className="couple-pairing">
-          <span className="person-name">{couple.groom.fullName}</span>
-          <span className="ampersand">&amp;</span>
-          <span className="person-name">{couple.bride.fullName}</span>
+        {/* Traditional Two-Sided Lineage & Couple Pairing */}
+        <div className="formal-family-layout">
+          {/* Groom's Family Side */}
+          <div className="family-column groom-column">
+            <div className="family-side-tag">वर पक्ष · Groom's Family</div>
+            <h3 className="family-person-name">{couple.groom.fullName}</h3>
+            
+            <div className="family-kinship-card">
+              <div className="kinship-row">
+                <span className="kinship-badge">{couple.groom.grandparentsLabel}</span>
+                <span className="kinship-names">{couple.groom.grandparents}</span>
+              </div>
+              <div className="kinship-row">
+                <span className="kinship-badge">{couple.groom.parentsLabel}</span>
+                <span className="kinship-names">{couple.groom.parents}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Central Sacred Knot / Weds Seal */}
+          <div className="formal-weds-seal" aria-hidden="true">
+            <span className="weds-knot-symbol">परिणय</span>
+            <span className="weds-ampersand">&amp;</span>
+            <span className="weds-knot-sub">WEDS</span>
+          </div>
+
+          {/* Bride's Family Side */}
+          <div className="family-column bride-column">
+            <div className="family-side-tag">वधू पक्ष · Bride's Family</div>
+            <h3 className="family-person-name">{couple.bride.fullName}</h3>
+            
+            <div className="family-kinship-card">
+              <div className="kinship-row">
+                <span className="kinship-badge">{couple.bride.grandparentsLabel}</span>
+                <span className="kinship-names">{couple.bride.grandparents}</span>
+              </div>
+              <div className="kinship-row">
+                <span className="kinship-badge">{couple.bride.parentsLabel}</span>
+                <span className="kinship-names">{couple.bride.parents}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Wedding Details Grid with Placeholders */}

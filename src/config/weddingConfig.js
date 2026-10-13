@@ -26,17 +26,25 @@ import sliding06 from "../assets/images/sliding_06.jpg";
 import sliding07 from "../assets/images/sliding_07.jpg";
 
 export const weddingConfig = {
-  // Couple Information
+  // Couple & Family Lineage
   couple: {
     groom: {
       firstName: "Abhishek",
       fullName: "Abhishek Pal",
-      parentsPlaceholder: "[Son of Mr. & Mrs. Pal]", // Editable parent placeholder
+      grandparentsLabel: "सुपौत्र",
+      grandparents: "स्व. श्री बाबूलालजी पाल (पैंथर पहलवान) - श्रीमती पार्वती पाल",
+      parentsLabel: "सुपुत्र",
+      parents: "श्री मुकेश पाल - श्रीमती सुनीता पाल",
+      parentsPlaceholder: "श्री मुकेश पाल - श्रीमती सुनीता पाल",
     },
     bride: {
       firstName: "Priyanshi",
       fullName: "Priyanshi Sharma",
-      parentsPlaceholder: "[Daughter of Mr. & Mrs. Sharma]", // Editable parent placeholder
+      grandparentsLabel: "सुपौत्री",
+      grandparents: "स्व. श्री दामोदर प्रसाद जी शर्मा - स्व. श्रीमती कमलादेवी शर्मा",
+      parentsLabel: "सुपुत्री",
+      parents: "श्री जितेंद्र शर्मा - श्रीमती सीमा शर्मा",
+      parentsPlaceholder: "श्री जितेंद्र शर्मा - श्रीमती सीमा शर्मा",
     },
     monogram: "AP",
     hashtag: "#AbhiWedsPriyanshi",
@@ -125,14 +133,14 @@ export const weddingConfig = {
   // Formal Invitation Card
   formalCard: {
     sacredInvocation: "॥ श्री गणेशाय नमः ॥",
-    title: "Wedding Invitation",
-    hostIntroText: "Together with our families and the blessings of our elders,",
-    familyNamesPlaceholder: "[Mr. & Mrs. Pal] & [Mr. & Mrs. Sharma]",
-    cordialMessage: "cordially invite you to celebrate the joyous wedding of their beloved children",
+    title: "Wedding Invitation · विवाह निमंत्रण",
+    hostIntroText: "परम पूज्य कुलदेवता, पितरों एवं अग्रजों के असीम आशीर्वाद से,",
+    familyNamesPlaceholder: "पाल एवं शर्मा परिवार",
+    cordialMessage: "आपको हमारे प्रिय पुत्र एवं पुत्री के शुभ विवाह में सादर आमंत्रित करते हैं",
     blessingQuote: "“May your journey be filled with wisdom, devotion, and boundless love.”",
     blessingCitation: "Seven Sacred Vows · Saptapadi",
-    venuePlaceholder: "Srishti Club, AB Road",
-    timingsPlaceholder: "11 Dec: Haldi, Mehendi & Sangeet · 12 Dec: Baraat & Shubh Vivah",
+    venuePlaceholder: "सृष्टि रिसॉर्ट एंड क्लब, एबी रोड, देवास",
+    timingsPlaceholder: "08 से 12 दिसम्बर 2026 · समस्त मांगलिक कार्यक्रम",
     contactPlaceholder: "Rahul Pal (7566125977) · Rohit Pal (8109123787) · Jitendra Sharma (8305158826)",
     contacts: [
       { name: "Rahul Pal", phone: "7566125977", tel: "+917566125977" },
