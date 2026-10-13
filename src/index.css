@@ -696,21 +696,19 @@ img {
   align-items: center;
   text-align: center;
   padding: 6rem 1.5rem 4rem;
-  background: linear-gradient(rgba(221, 242, 253, 0.35), rgba(22, 72, 99, 0.2));
+  background: var(--champagne-light);
   overflow: hidden;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  inset: -8%;
+  inset: 0;
   background-image: 
-    linear-gradient(rgba(221, 242, 253, 0.45), rgba(22, 72, 99, 0.3)),
+    linear-gradient(180deg, rgba(255, 248, 232, 0.2) 0%, rgba(255, 253, 245, 0.35) 60%, rgba(221, 242, 253, 0.35) 100%),
     url("./assets/images/hero_couple.jpg");
-  background-position: center 30%;
+  background-position: center center;
   background-size: cover;
-  filter: blur(3px) saturate(1.05);
-  transform: scale(1.05);
   z-index: 0;
 }
 
