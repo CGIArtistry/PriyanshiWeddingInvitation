@@ -144,21 +144,28 @@ export const CelestialIntro = ({ onEnter }) => {
           >
             <span className="bubble-glass" aria-hidden="true" />
             <span className="bubble-photo">
-              <img src={intro.centralPhoto} alt="Abhishek & Priyanshi" draggable="false" />
+              <img src={intro.centralPhoto} alt="Abhishek & Priyanshi Wedding Logo" draggable="false" />
             </span>
             <span className="bubble-sheen" aria-hidden="true" />
             <span className="bubble-halo" aria-hidden="true" />
-
-            {/* Monogram Wax Seal */}
-            <span className="bubble-seal">
-              <i>{intro.monogramSeal}</i>
-            </span>
-
-            <span className="bubble-copy">
-              <strong>{intro.enterButtonText}</strong>
-              <span className="bubble-copy-hint">{intro.enterSubtext}</span>
-            </span>
           </button>
+
+          {/* Elegant Floating Enter Invitation CTA Pill */}
+          <div className="portal-action-wrap">
+            <button
+              className="portal-enter-pill"
+              type="button"
+              onClick={onEnter}
+              aria-label={intro.enterButtonText}
+            >
+              <span className="pill-spark" aria-hidden="true">✦</span>
+              <span className="pill-text-col">
+                <strong className="pill-title">{intro.enterButtonText}</strong>
+                <span className="pill-subtitle">{intro.enterSubtext}</span>
+              </span>
+              <span className="pill-spark" aria-hidden="true">✦</span>
+            </button>
+          </div>
         </div>
       </section>
 
