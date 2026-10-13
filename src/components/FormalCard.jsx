@@ -10,7 +10,7 @@ export const FormalCard = () => {
 
   return (
     <section className="section-wrap" id="invitation">
-      <div className="formal-card">
+      <div className={`formal-card ${lang === "hi" ? "is-hindi-version" : "is-english-version"}`} lang={lang}>
         {/* Language Selection Switcher */}
         <div className="formal-lang-toolbar">
           <div className="formal-lang-pill-group" role="tablist" aria-label="Select Invitation Language">

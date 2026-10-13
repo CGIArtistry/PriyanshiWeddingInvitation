@@ -36,9 +36,11 @@
   --muted: #5e899e;
 
   /* Typography */
-  --display: "Cinzel", "Times New Roman", serif;
+  --display: "Cinzel", "Noto Serif Devanagari", "Times New Roman", serif;
   --script: "Alex Brush", "Pinyon Script", cursive;
-  --body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --body: "Plus Jakarta Sans", "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --hindi-serif: "Noto Serif Devanagari", Georgia, serif;
+  --hindi-sans: "Mukta", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Base Resets & Performance */
@@ -70,6 +72,33 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================================
+   Authentic High-Legibility Devanagari & Hindi Typography Engine
+   ===================================================================== */
+:lang(hi),
+[lang="hi"],
+.is-hindi-version,
+.hindi-text {
+  font-feature-settings: "kern" 1, "liga" 1, "clig" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure Continuous Shirorekha: Matras and Conjuncts are NEVER separated */
+[lang="hi"] *,
+.is-hindi-version *,
+.sacred-shloka-header,
+.scripture-text,
+.event-script-title,
+.events-intro-line,
+.day-name,
+.time-pill-badge,
+.event-narrative,
+.ceremony-tab-pill .tab-pill-sub,
+.hindi-badge-text {
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 /* =====================================================================
@@ -991,18 +1020,22 @@ img {
 }
 
 .scripture-text {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--ink);
-  line-height: 1.7;
+  font-family: var(--hindi-serif);
+  font-style: normal;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--teal-night);
+  line-height: 1.85;
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 .scripture-citation {
-  font-size: 0.75rem;
+  font-family: var(--hindi-sans);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   color: var(--gold);
   margin-top: 0.5rem;
 }
@@ -1045,6 +1078,16 @@ img {
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 0.5rem;
+}
+
+.label-badge .hindi-badge-text,
+.hindi-badge-text {
+  font-family: var(--hindi-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block;
 }
 
 .main-heading {
@@ -1994,10 +2037,13 @@ img {
 }
 
 .sacred-shloka-header {
-  font-family: var(--display);
-  font-size: 1.45rem;
+  font-family: var(--hindi-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
   color: var(--gold-warm);
-  letter-spacing: 0.1em;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1.35;
   margin-bottom: 1.2rem;
 }
 
@@ -2100,11 +2146,117 @@ img {
 }
 
 .kinship-names {
-  font-family: "Rozha One", var(--display), serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-family: var(--hindi-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--teal-night);
+  font-weight: 600;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* Hindi Mode Specific Refinements */
+.formal-card.is-hindi-version {
+  font-family: var(--hindi-serif);
+}
+
+.formal-card.is-hindi-version .label-badge {
+  font-family: var(--hindi-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.formal-card.is-hindi-version .host-intro {
+  font-family: var(--hindi-serif);
+  font-size: 1.16rem;
+  line-height: 1.95;
   font-weight: 500;
+  color: #4a5445;
+}
+
+.formal-card.is-hindi-version .host-intro strong {
+  font-family: var(--hindi-serif);
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: var(--teal-night);
+}
+
+.formal-card.is-hindi-version .host-intro em {
+  font-family: var(--hindi-serif);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.12rem;
+  color: #3b584a;
+}
+
+.formal-card.is-hindi-version .family-side-tag {
+  font-family: var(--hindi-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.formal-card.is-hindi-version .family-person-name {
+  font-family: var(--hindi-serif);
+  font-size: clamp(2.1rem, 4.2vw, 2.9rem);
+  font-weight: 700;
+  color: var(--teal-night);
+  line-height: 1.3;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.formal-card.is-hindi-version .kinship-badge {
+  font-family: var(--hindi-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  padding: 0.22rem 0.65rem;
+}
+
+.formal-card.is-hindi-version .kinship-names {
+  font-family: var(--hindi-serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.formal-card.is-hindi-version .weds-knot-symbol {
+  font-family: var(--hindi-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  line-height: 1.1;
+}
+
+.formal-card.is-hindi-version .weds-knot-sub {
+  font-family: var(--hindi-serif);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  line-height: 1.1;
+}
+
+.formal-card.is-hindi-version .formal-detail-label {
+  font-family: var(--hindi-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.formal-card.is-hindi-version .formal-detail-val {
+  font-family: var(--hindi-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 /* Auspicious Central Weds Seal */
@@ -2308,10 +2460,14 @@ img {
    8. Ceremony & Celebration Cards (Distinctive Arch Cards)
    ===================================================================== */
 .events-intro-line {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.05rem;
+  font-family: var(--hindi-serif);
+  font-style: normal;
+  font-size: 1.15rem;
+  font-weight: 500;
   color: var(--sage);
+  line-height: 1.7;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   margin-bottom: 2.5rem;
 }
 
@@ -2355,9 +2511,12 @@ img {
 }
 
 .ceremony-tab-pill .tab-pill-sub {
-  font-size: 0.72rem;
-  opacity: 0.8;
-  font-weight: 500;
+  font-family: var(--hindi-sans);
+  font-size: 0.76rem;
+  opacity: 0.9;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 .ceremony-tab-pill:hover {
@@ -2553,26 +2712,31 @@ img {
 }
 
 .save-the-date-tag {
-  font-family: var(--display);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-family: var(--hindi-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  opacity: 0.95;
 }
 
 .event-script-title {
-  font-family: "Rozha One", var(--display), serif;
-  font-size: clamp(2rem, 5.2vw, 2.75rem);
+  font-family: var(--hindi-serif);
+  font-size: clamp(1.85rem, 4.8vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.25;
-  margin: 0.5rem 0 0.3rem;
-  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 0.5rem 0 0.35rem;
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 .event-subtitle-tag {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.95rem;
-  opacity: 0.9;
+  font-family: var(--hindi-serif);
+  font-style: normal;
+  font-size: 0.96rem;
+  font-weight: 500;
+  opacity: 0.92;
+  letter-spacing: normal !important;
 }
 
 .date-row {
@@ -2589,6 +2753,14 @@ img {
   text-transform: uppercase;
 }
 
+.day-name {
+  font-family: var(--hindi-sans);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
 .day-number {
   font-family: var(--display);
   font-size: 3.5rem;
@@ -2600,21 +2772,25 @@ img {
   display: inline-flex;
   gap: 0.4rem;
   margin: 0 auto 1.4rem;
-  padding: 0.4rem 1.4rem;
+  padding: 0.42rem 1.4rem;
   border: 1px solid currentColor;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-family: var(--hindi-sans);
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   background: rgba(0, 0, 0, 0.08);
 }
 
 .event-narrative {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  font-family: var(--hindi-sans);
+  font-size: 0.96rem;
+  line-height: 1.85;
+  font-weight: 400;
   opacity: 0.95;
   margin-bottom: 1.5rem;
+  letter-spacing: normal !important;
 }
 
 .arch-card-footer {
@@ -2644,14 +2820,18 @@ img {
 }
 
 .venue-bottom-banner strong {
-  font-family: var(--display);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+  font-family: var(--hindi-serif);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: normal !important;
 }
 
 .venue-bottom-banner span {
-  font-size: 0.68rem;
-  opacity: 0.85;
+  font-family: var(--hindi-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.9;
+  letter-spacing: normal !important;
 }
 
 .add-to-calendar-btn {

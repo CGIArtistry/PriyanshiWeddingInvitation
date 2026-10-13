@@ -48,7 +48,7 @@ export const CeremonyCards = () => {
   return (
     <section className="section-wrap" id="events">
       <div className="section-intro">
-        <div className="label-badge">Sacred Moments · वैवाहिक कार्यक्रम</div>
+        <div className="label-badge">Sacred Moments · <span className="hindi-badge-text">वैवाहिक कार्यक्रम</span></div>
         <h2 className="main-heading">Ceremony &amp; Celebrations</h2>
         <p className="events-intro-line">
           08 से 12 दिसम्बर 2026 · समस्त मांगलिक आयोजनों में आपकी गरिमामयी उपस्थिति प्रार्थनीय है
