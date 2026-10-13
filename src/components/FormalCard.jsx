@@ -6,6 +6,21 @@ export const FormalCard = () => {
   const { formalCard } = weddingConfig;
   const [lang, setLang] = useState("hi");
 
+  React.useEffect(() => {
+    const handleSync = (e) => {
+      if (e.detail && (e.detail === "hi" || e.detail === "en")) {
+        setLang(e.detail);
+      }
+    };
+    window.addEventListener("wedding-lang-change", handleSync);
+    return () => window.removeEventListener("wedding-lang-change", handleSync);
+  }, []);
+
+  const handleSelectLang = (newLang) => {
+    setLang(newLang);
+    window.dispatchEvent(new CustomEvent("wedding-lang-change", { detail: newLang }));
+  };
+
   const c = formalCard[lang] || formalCard.hi;
 
   return (
@@ -19,7 +34,7 @@ export const FormalCard = () => {
               role="tab"
               aria-selected={lang === "hi"}
               className={`lang-tab-pill ${lang === "hi" ? "is-active" : ""}`}
-              onClick={() => setLang("hi")}
+              onClick={() => handleSelectLang("hi")}
               title="हिन्दी संस्करण देखें"
             >
               <span className="lang-tab-primary">हिन्दी</span>
@@ -30,7 +45,7 @@ export const FormalCard = () => {
               role="tab"
               aria-selected={lang === "en"}
               className={`lang-tab-pill ${lang === "en" ? "is-active" : ""}`}
-              onClick={() => setLang("en")}
+              onClick={() => handleSelectLang("en")}
               title="View English Version"
             >
               <span className="lang-tab-primary">English</span>

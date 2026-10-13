@@ -2834,6 +2834,59 @@ img {
   letter-spacing: normal !important;
 }
 
+/* English Version Overrides for Ceremony Cards */
+.arch-card.is-english-version .event-script-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4.4vw, 2.35rem);
+  letter-spacing: 0.02em;
+}
+
+.arch-card.is-english-version .save-the-date-tag {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.arch-card.is-english-version .day-name {
+  font-family: var(--display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.arch-card.is-english-version .time-pill-badge {
+  font-family: var(--body);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arch-card.is-english-version .event-subtitle-tag {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.arch-card.is-english-version .event-narrative {
+  font-family: var(--body);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.arch-card.is-english-version .venue-bottom-banner strong {
+  font-family: var(--display);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+.arch-card.is-english-version .venue-bottom-banner span {
+  font-family: var(--body);
+  font-size: 0.74rem;
+}
+
 .add-to-calendar-btn {
   display: flex;
   align-items: center;
