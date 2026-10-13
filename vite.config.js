@@ -9,6 +9,9 @@ export default defineConfig({
     viteSingleFile({ useRecommendedBuildConfig: false }),
   ],
   base: './',
+  build: {
+    assetsDir: '',
+  },
 })
 
 

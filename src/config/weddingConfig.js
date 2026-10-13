@@ -17,6 +17,13 @@ import gallerySangeet from "../assets/images/gallery_sangeet.jpg";
 import galleryVivah from "../assets/images/gallery_vivah.jpg";
 import galleryMandap from "../assets/images/gallery_mandap.jpg";
 import galleryReception from "../assets/images/gallery_reception.jpg";
+import sliding01 from "../assets/images/sliding_01.jpg";
+import sliding02 from "../assets/images/sliding_02.jpg";
+import sliding03 from "../assets/images/sliding_03.jpg";
+import sliding04 from "../assets/images/sliding_04.jpg";
+import sliding05 from "../assets/images/sliding_05.jpg";
+import sliding06 from "../assets/images/sliding_06.jpg";
+import sliding07 from "../assets/images/sliding_07.jpg";
 
 export const weddingConfig = {
   // Couple Information
@@ -59,16 +66,16 @@ export const weddingConfig = {
     centralPhoto: bubbleCouple,
     // Orbital floating framed photographs (10 frames at varying parallax depths)
     orbitalFrames: [
-      { id: 1, src: heroCouple, depth: 0.55, tilt: "-4deg", delay: "0s", posVar: "--at-a" },
-      { id: 2, src: storyOne, depth: 0.8, tilt: "3.4deg", delay: "-2.1s", posVar: "--at-b" },
-      { id: 3, src: storyTwo, depth: 1.1, tilt: "-3deg", delay: "-3.6s", posVar: "--at-c" },
+      { id: 1, src: sliding02, depth: 0.55, tilt: "-4deg", delay: "0s", posVar: "--at-a" },
+      { id: 2, src: sliding03, depth: 0.8, tilt: "3.4deg", delay: "-2.1s", posVar: "--at-b" },
+      { id: 3, src: sliding01, depth: 1.1, tilt: "-3deg", delay: "-3.6s", posVar: "--at-c" },
       { id: 4, src: galleryHaldi, depth: 1.45, tilt: "4deg", delay: "-5.2s", posVar: "--at-d" },
-      { id: 5, src: gallerySangeet, depth: 1.8, tilt: "-2.4deg", delay: "-6.8s", posVar: "--at-e" },
-      { id: 6, src: galleryVivah, depth: 2.2, tilt: "3.2deg", delay: "-1.4s", posVar: "--at-f" },
+      { id: 5, src: sliding05, depth: 1.8, tilt: "-2.4deg", delay: "-6.8s", posVar: "--at-e" },
+      { id: 6, src: sliding06, depth: 2.2, tilt: "3.2deg", delay: "-1.4s", posVar: "--at-f" },
       { id: 7, src: galleryMandap, depth: 2.7, tilt: "-4.4deg", delay: "-8.3s", posVar: "--at-g" },
-      { id: 8, src: galleryReception, depth: 3.2, tilt: "2.2deg", delay: "-4.6s", posVar: "--at-h" },
-      { id: 9, src: storyOne, depth: 3.8, tilt: "-3.6deg", delay: "-7.7s", posVar: "--at-i" },
-      { id: 10, src: heroCouple, depth: 4.4, tilt: "3.8deg", delay: "-3s", posVar: "--at-j" },
+      { id: 8, src: sliding07, depth: 3.2, tilt: "2.2deg", delay: "-4.6s", posVar: "--at-h" },
+      { id: 9, src: sliding04, depth: 3.8, tilt: "-3.6deg", delay: "-7.7s", posVar: "--at-i" },
+      { id: 10, src: storyTwo, depth: 4.4, tilt: "3.8deg", delay: "-3s", posVar: "--at-j" },
     ],
   },
 
@@ -189,18 +196,22 @@ export const weddingConfig = {
     title: "Our Journey In Frames",
     subtitle: "Every smile, every glance, and the moments we will treasure forever",
     itemsTrack1: [
-      { src: heroCouple, title: "Misty Mornings", caption: "Walking into forever side by side in grace" },
-      { src: storyOne, title: "Golden Courtyard", caption: "Two hearts filled with warmth and gratitude" },
+      { src: sliding02, title: "Endless Horizons", caption: "Walking into forever side by side under open skies" },
+      { src: sliding01, title: "The Dashing Groom", caption: "Poised with style, grace, and quiet confidence" },
+      { src: sliding03, title: "The Radiant Bride", caption: "Capturing beauty, wonder, and heartfelt moments" },
+      { src: sliding04, title: "Chapters of Love", caption: "Every verse of life is sweeter shared together" },
       { src: galleryHaldi, title: "Vibrant Haldi", caption: "Laughter, marigolds, and pure celebration" },
-      { src: storyTwo, title: "Sweet Smiles", caption: "Joyful laughter and lifelong promises" },
-      { src: gallerySangeet, title: "Twinkling Night", caption: "Dancing under a canopy of golden starlight" },
+      { src: gallerySangeet, title: "Twinkling Sangeet", caption: "Dancing under a canopy of golden starlight" },
+      { src: storyOne, title: "Golden Courtyard", caption: "Two hearts filled with warmth and gratitude" },
     ],
     itemsTrack2: [
+      { src: sliding05, title: "Joy & Laughter", caption: "Playful laughter and infectious happiness" },
+      { src: sliding06, title: "A Sacred Promise", caption: "Strength, devotion, and a bond for eternity" },
+      { src: sliding07, title: "Winter Radiance", caption: "Warmth in the chill, glowing with grace" },
+      { src: storyTwo, title: "Sweet Smiles", caption: "Joyful laughter and lifelong promises" },
       { src: galleryVivah, title: "Sacred Phere", caption: "Seven sacred vows sealed with holy fire" },
       { src: galleryMandap, title: "Royal Mandap", caption: "Surrounded by jasmine blossoms and love" },
       { src: galleryReception, title: "Twilight Glow", caption: "A majestic new beginning beneath palace domes" },
-      { src: bubbleCouple, title: "Eternal Love", caption: "The quiet magic of feeling completely at home" },
-      { src: storyOne, title: "#AbhiWedsPriyanshi", caption: "A love story written in the stars" },
     ],
   },
 
