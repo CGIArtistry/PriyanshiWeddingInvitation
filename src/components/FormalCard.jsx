@@ -67,12 +67,29 @@ export const FormalCard = () => {
             )}
           </div>
 
-          <div className="formal-detail-item">
+          <div className="formal-detail-item formal-contacts-block">
             <span className="formal-detail-label">
               <Phone size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
               Contact &amp; RSVP
             </span>
-            <span className="formal-detail-val">{formalCard.contactPlaceholder}</span>
+            <div className="formal-contacts-list">
+              {formalCard.contacts && formalCard.contacts.length > 0 ? (
+                formalCard.contacts.map((c, i) => (
+                  <a
+                    key={i}
+                    href={`tel:${c.tel}`}
+                    className="formal-contact-pill"
+                    title={`Call ${c.name} at ${c.phone}`}
+                  >
+                    <span className="contact-name">{c.name}</span>
+                    <span className="contact-sep">·</span>
+                    <span className="contact-phone">{c.phone}</span>
+                  </a>
+                ))
+              ) : (
+                <span className="formal-detail-val">{formalCard.contactPlaceholder}</span>
+              )}
+            </div>
           </div>
         </div>
 

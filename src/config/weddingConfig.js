@@ -133,9 +133,21 @@ export const weddingConfig = {
     blessingCitation: "Seven Sacred Vows · Saptapadi",
     venuePlaceholder: "Srishti Club, AB Road",
     timingsPlaceholder: "11 Dec: Haldi, Mehendi & Sangeet · 12 Dec: Baraat & Shubh Vivah",
-    contactPlaceholder: "[RSVP & Queries: +91 98765 43210 / family@example.com]",
+    contactPlaceholder: "Rahul Pal (7566125977) · Rohit Pal (8109123787) · Jitendra Sharma (8305158826)",
+    contacts: [
+      { name: "Rahul Pal", phone: "7566125977", tel: "+917566125977" },
+      { name: "Rohit Pal", phone: "8109123787", tel: "+918109123787" },
+      { name: "Jitendra Sharma", phone: "8305158826", tel: "+918305158826" },
+    ],
     mapUrl: "https://maps.app.goo.gl/Xyuxn4DUoihz3x1j7",
   },
+
+  // Contact & RSVP Direct Helplines
+  contacts: [
+    { name: "Rahul Pal", phone: "7566125977", tel: "+917566125977" },
+    { name: "Rohit Pal", phone: "8109123787", tel: "+918109123787" },
+    { name: "Jitendra Sharma", phone: "8305158826", tel: "+918305158826" },
+  ],
 
   // Ceremony & Celebration Arch Cards
   events: [

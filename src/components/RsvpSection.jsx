@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Send, Heart } from "lucide-react";
+import { Send, Heart, Phone } from "lucide-react";
+import { weddingConfig } from "../config/weddingConfig";
 
 export const RsvpSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export const RsvpSection = () => {
     if (!formData.name) return;
     setSubmitted(true);
   };
+
+  const { contacts } = weddingConfig;
 
   return (
     <section className="section-wrap" id="rsvp">
@@ -93,6 +96,27 @@ export const RsvpSection = () => {
             </button>
           </form>
         )}
+
+        {/* Direct Contact & RSVP Helpline Badges */}
+        <div className="rsvp-contact-helpline">
+          <div className="rsvp-helpline-title">
+            <Phone size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "6px" }} />
+            Contact &amp; RSVP
+          </div>
+          <div className="rsvp-contact-cards">
+            {contacts && contacts.map((c, idx) => (
+              <a
+                key={idx}
+                href={`tel:${c.tel}`}
+                className="rsvp-contact-chip"
+                title={`Call ${c.name} (${c.phone})`}
+              >
+                <span className="rsvp-contact-name">{c.name}</span>
+                <span className="rsvp-contact-phone">{c.phone}</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
