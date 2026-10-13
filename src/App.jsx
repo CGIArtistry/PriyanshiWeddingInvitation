@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { CelestialIntro } from "./components/CelestialIntro";
 import { HeroSection } from "./components/HeroSection";
 import { SaveTheDateReveal } from "./components/SaveTheDateReveal";
@@ -6,9 +6,12 @@ import { OurStory } from "./components/OurStory";
 import { GalleryCarousel } from "./components/GalleryCarousel";
 import { FormalCard } from "./components/FormalCard";
 import { CeremonyCards } from "./components/CeremonyCards";
+import { RsvpSection } from "./components/RsvpSection";
 import { HeavenlyFinale } from "./components/HeavenlyFinale";
 import { AudioPlayer } from "./components/AudioPlayer";
 import { LightboxModal } from "./components/LightboxModal";
+import { FloatingNav } from "./components/FloatingNav";
+import { CursorGlow } from "./components/CursorGlow";
 import { weddingConfig } from "./config/weddingConfig";
 
 export function App() {
@@ -64,6 +67,36 @@ export function App() {
     setSelectedPhoto(allGalleryPhotos[prevIndex]);
   };
 
+  // Smooth Scroll-Triggered Reveal Animation
+  useEffect(() => {
+    if (!hasEntered) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    const targets = document.querySelectorAll(
+      ".section-wrap, .promise-section, .royal-reveal-section, .carousel-shell, .formal-card, .arch-card, .rsvp-shell"
+    );
+
+    targets.forEach((el) => {
+      el.classList.add("reveal-on-scroll");
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [hasEntered]);
+
   return (
     <div className={`app-root ${hasEntered ? "is-entered" : "is-entry"}`}>
       {/* 1. Opening Screen — Celestial Animation */}
@@ -78,7 +111,13 @@ export function App() {
 
       {/* 2. Main Wedding Invitation Page */}
       {hasEntered && (
-        <main className="wedding-page">
+        <main className="wedding-page" id="top">
+          {/* Subtle Ambient Cursor Light Follower (Desktop) */}
+          <CursorGlow />
+
+          {/* Floating Luxury Navigation Dock & Progress Bar */}
+          <FloatingNav />
+
           {/* Ambient Falling Atmosphere Particles */}
           <div className="falling-atmosphere" aria-hidden="true">
             {atmosphereParticles.map((p) => (
@@ -113,7 +152,10 @@ export function App() {
           {/* 8. Ceremony & Celebration Cards */}
           <CeremonyCards />
 
-          {/* 9. Heavenly Finale & Footer */}
+          {/* 9. Warm Wishes & RSVP Section */}
+          <RsvpSection />
+
+          {/* 10. Heavenly Finale & Footer */}
           <HeavenlyFinale />
 
           {/* Floating Audio Music Controller */}

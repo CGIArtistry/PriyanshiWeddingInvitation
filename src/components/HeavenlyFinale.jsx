@@ -51,16 +51,6 @@ export const HeavenlyFinale = () => {
           {couple.hashtag} · {weddingDate.displayDay} {weddingDate.displayMonth} {weddingDate.displayYear}
         </strong>
       </footer>
-
-      {/* Floating Back to Top Button */}
-      <button
-        className="back-to-top-btn"
-        onClick={scrollToTop}
-        aria-label="Scroll back to top"
-        title="Back to Top"
-      >
-        <ArrowUp size={20} />
-      </button>
     </>
   );
 };
