@@ -111,7 +111,7 @@ export function App() {
 
       {/* 2. Main Wedding Invitation Page */}
       {hasEntered && (
-        <main className="wedding-page" id="top">
+        <div className="wedding-wrapper">
           {/* Subtle Ambient Cursor Light Follower (Desktop) */}
           <CursorGlow />
 
@@ -134,29 +134,32 @@ export function App() {
             ))}
           </div>
 
-          {/* 3. Main Hero Section */}
-          <HeroSection />
+          {/* Clean Main Page Content: Hero Section Flush at Very Top */}
+          <main className="wedding-page" id="top">
+            {/* 3. Main Hero Section */}
+            <HeroSection />
 
-          {/* 4. Save The Date & Live Dynamic Countdown */}
-          <SaveTheDateReveal />
+            {/* 4. Save The Date & Live Dynamic Countdown */}
+            <SaveTheDateReveal />
 
-          {/* 5. Our Story — Editorial Layout */}
-          <OurStory />
+            {/* 5. Our Story — Editorial Layout */}
+            <OurStory />
 
-          {/* 6. Wedding Photography Gallery */}
-          <GalleryCarousel onSelectPhoto={setSelectedPhoto} />
+            {/* 6. Wedding Photography Gallery */}
+            <GalleryCarousel onSelectPhoto={setSelectedPhoto} />
 
-          {/* 7. Wedding Information Formal Card */}
-          <FormalCard />
+            {/* 7. Wedding Information Formal Card */}
+            <FormalCard />
 
-          {/* 8. Ceremony & Celebration Cards */}
-          <CeremonyCards />
+            {/* 8. Ceremony & Celebration Cards */}
+            <CeremonyCards />
 
-          {/* 9. Warm Wishes & RSVP Section */}
-          <RsvpSection />
+            {/* 9. Warm Wishes & RSVP Section */}
+            <RsvpSection />
 
-          {/* 10. Heavenly Finale & Footer */}
-          <HeavenlyFinale />
+            {/* 10. Heavenly Finale & Footer */}
+            <HeavenlyFinale />
+          </main>
 
           {/* Floating Audio Music Controller */}
           <AudioPlayer autoStart={shouldPlayAudio} />
@@ -168,7 +171,7 @@ export function App() {
             onNext={handleNextPhoto}
             onPrev={handlePrevPhoto}
           />
-        </main>
+        </div>
       )}
     </div>
   );
