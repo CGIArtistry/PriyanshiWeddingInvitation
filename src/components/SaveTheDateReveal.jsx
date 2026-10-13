@@ -142,7 +142,19 @@ export const SaveTheDateReveal = () => {
             </div>
 
             <p className="date-location">
-              {weddingDate.venuePlaceholder} · {weddingDate.timePlaceholder}
+              {weddingDate.mapUrl ? (
+                <a
+                  href={weddingDate.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="venue-quick-link"
+                  title="View Srishti Club on Google Maps"
+                >
+                  📍 {weddingDate.venuePlaceholder} · {weddingDate.timePlaceholder}
+                </a>
+              ) : (
+                <>{weddingDate.venuePlaceholder} · {weddingDate.timePlaceholder}</>
+              )}
             </p>
 
             {/* Dynamic Live Countdown Card */}

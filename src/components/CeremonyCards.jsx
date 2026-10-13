@@ -28,6 +28,7 @@ export const CeremonyCards = () => {
   };
 
   const getMapsUrl = (event) => {
+    if (event.mapUrl) return event.mapUrl;
     const query = encodeURIComponent(`${event.venuePlaceholder} ${event.addressPlaceholder}`);
     return `https://www.google.com/maps/search/?api=1&query=${query}`;
   };

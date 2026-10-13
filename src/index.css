@@ -53,6 +53,9 @@ html {
   font-size: 16px;
   width: 100%;
   min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -67,6 +70,126 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================================
+   Magical Pointer Text Glow & Luminescence on Mouse Reach
+   ===================================================================== */
+h1, h2, h3, h4, h5, h6,
+p, blockquote,
+.main-heading,
+.hero-title,
+.hero-title span,
+.event-script-title,
+.script-name,
+.person-name,
+.promise-heading,
+.heavenly-names,
+.heavenly-names span,
+.sacred-shloka-header,
+.seal-invitation-text,
+.royal-day,
+.royal-month-year,
+.hero-subtitle,
+.hashtag,
+.label-badge,
+.quote-block,
+.scripture-text,
+.scripture-citation,
+.date-row .day-number,
+.timer-num,
+.timer-label,
+.time-pill-badge,
+.formal-detail-link,
+.formal-detail-label,
+.formal-detail-val,
+.host-intro,
+.bulleted-story li,
+.story-close,
+.events-intro-line,
+.venue-bottom-banner strong,
+.venue-quick-link,
+.rsvp-note,
+.save-the-date-tag,
+.monogram-letters {
+  transition: text-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.35s ease,
+              filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 1. Grand Royal Gold & Starlight Glow for Titles, Monograms & Headings */
+h1:hover, h2:hover, h3:hover, h4:hover,
+.main-heading:hover,
+.hero-title:hover,
+.hero-title span:hover,
+.event-script-title:hover,
+.script-name:hover,
+.person-name:hover,
+.promise-heading:hover,
+.heavenly-names span:hover,
+.sacred-shloka-header:hover,
+.seal-invitation-text:hover,
+.royal-day:hover,
+.monogram-letters:hover {
+  text-shadow: 
+    0 0 10px rgba(255, 235, 179, 0.95),
+    0 0 24px rgba(214, 163, 71, 0.85),
+    0 0 48px rgba(182, 141, 64, 0.65),
+    0 0 75px rgba(221, 242, 253, 0.5);
+  transform: translateY(-2.5px);
+  filter: brightness(1.08);
+}
+
+/* 2. Warm Amber & Champagne Radiance for Subtitles, Badges & Labels */
+.hero-subtitle:hover,
+.hashtag:hover,
+.label-badge:hover,
+.quote-block:hover,
+.scripture-text:hover,
+.scripture-citation:hover,
+.time-pill-badge:hover,
+.date-row:hover .day-number,
+.venue-quick-link:hover,
+.venue-bottom-banner:hover strong,
+.formal-detail-link:hover,
+.formal-detail-label:hover,
+.formal-detail-val:hover,
+.host-intro:hover,
+.bulleted-story li:hover,
+.story-close:hover,
+.events-intro-line:hover,
+.rsvp-note:hover,
+.timer-num:hover,
+.timer-label:hover,
+.royal-month-year:hover,
+.save-the-date-tag:hover,
+p:hover,
+blockquote:hover {
+  text-shadow: 
+    0 0 8px rgba(245, 222, 160, 0.95),
+    0 0 20px rgba(182, 141, 64, 0.7),
+    0 0 35px rgba(214, 163, 71, 0.45);
+  transform: translateY(-1.5px);
+}
+
+/* Universal Smooth Motion Feel on All Cards & Interactive Stages */
+.arch-card,
+.formal-card,
+.revealed-content,
+.rsvp-shell,
+.countdown-card,
+.scripture-pill,
+.interactive-photo,
+.floating-audio-pill,
+.back-to-top-btn,
+.calendar-card-btn,
+.submit-cta {
+  will-change: transform, box-shadow;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.45s ease,
+              border-color 0.45s ease;
 }
 
 #root, .app-root {
@@ -847,20 +970,24 @@ img {
 }
 
 .scripture-pill {
+  position: relative;
   max-width: 680px;
-  padding: 1.6rem 2.2rem;
+  padding: 1.8rem 2.4rem;
   border-radius: 24px;
-  background: var(--parchment);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 16px 40px -10px rgba(40, 54, 39, 0.12);
-  transition: transform 0.4s, box-shadow 0.4s;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 45px -10px rgba(22, 72, 99, 0.14),
+              0 0 0 1px rgba(182, 141, 64, 0.2),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scripture-pill:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 50px -10px rgba(40, 54, 39, 0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 26px 55px -10px rgba(22, 72, 99, 0.18),
+              0 0 0 1px rgba(214, 163, 71, 0.35);
 }
 
 .scripture-text {
@@ -1067,26 +1194,54 @@ img {
   margin-top: 0.5rem;
 }
 
-/* Revealed Content Card */
+/* Revealed Content Card — Luxury Glassmorphic Edition */
 .revealed-content {
   position: relative;
-  padding: 3.5rem 2rem;
-  border-radius: 24px;
-  background: var(--parchment);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 20px 45px -10px rgba(40, 54, 39, 0.15);
+  padding: 3.8rem 2.2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 55px -12px rgba(22, 72, 99, 0.16),
+              0 0 0 1px rgba(214, 163, 71, 0.2),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
   animation: reveal-pop 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .revealed-content::before {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(182, 141, 64, 0.3);
-  border-radius: 16px;
+  border: 1px dashed rgba(182, 141, 64, 0.35);
+  border-radius: 20px;
   pointer-events: none;
+}
+
+/* Glass reflection sweep */
+.revealed-content::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    55deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.2) 48%,
+    rgba(255, 255, 255, 0.4) 52%,
+    transparent 60%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.revealed-content:hover::after {
+  transform: rotate(25deg) translateY(100%);
 }
 
 @keyframes reveal-pop {
@@ -1137,9 +1292,32 @@ img {
 
 .date-location {
   font-family: var(--display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--muted);
-  margin: 0.5rem 0 1.5rem;
+  margin: 0.8rem 0 1.8rem;
+}
+
+.venue-quick-link {
+  display: inline-block;
+  color: var(--teal-night);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 141, 64, 0.35);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(22, 72, 99, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.venue-quick-link:hover {
+  background: linear-gradient(135deg, #b68d40, #d49b4b);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(182, 141, 64, 0.35);
 }
 
 /* Live Dynamic Countdown Card */
@@ -1149,14 +1327,24 @@ img {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
   max-width: 580px;
-  margin: 2rem auto;
-  padding: 1.4rem 1.8rem;
-  border-radius: 16px;
-  border: 1px solid rgba(182, 141, 64, 0.28);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 24px rgba(40, 54, 39, 0.08);
+  margin: 2.2rem auto;
+  padding: 1.6rem 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 16px 40px -10px rgba(22, 72, 99, 0.14),
+              0 0 0 1px rgba(182, 141, 64, 0.22),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
   overflow: hidden;
-  transition: transform 0.45s, box-shadow 0.45s;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.countdown-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 50px -10px rgba(22, 72, 99, 0.18),
+              0 0 0 1px rgba(214, 163, 71, 0.35);
 }
 
 .countdown-card::before {
@@ -1633,35 +1821,64 @@ img {
 
 .formal-card {
   position: relative;
-  max-width: 820px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 4.5rem 3rem;
-  border-radius: 24px;
-  background: var(--parchment);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 16px 40px -10px rgba(40, 54, 39, 0.12);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s;
+  padding: 4.8rem 3.2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 55px -12px rgba(22, 72, 99, 0.15),
+              0 0 0 1px rgba(182, 141, 64, 0.2),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .formal-card::before {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px dashed rgba(182, 141, 64, 0.4);
-  border-radius: 16px;
+  border: 1px dashed rgba(182, 141, 64, 0.45);
+  border-radius: 20px;
   pointer-events: none;
 }
 
+/* Glass reflection shine sweep across card */
+.formal-card::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    55deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0.45) 52%,
+    transparent 60%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.formal-card:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
 .formal-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 55px -14px rgba(40, 54, 39, 0.2);
+  transform: translateY(-8px) scale(1.008);
+  box-shadow: 0 32px 70px -15px rgba(22, 72, 99, 0.22),
+              0 0 0 1px rgba(214, 163, 71, 0.35);
 }
 
 .sacred-shloka-header {
   font-family: var(--display);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   color: var(--gold-warm);
   letter-spacing: 0.1em;
   margin-bottom: 1.2rem;
@@ -1730,13 +1947,54 @@ img {
   color: var(--teal-night);
 }
 
+.formal-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--teal-night);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(182, 141, 64, 0.35);
+  box-shadow: 0 4px 14px rgba(22, 72, 99, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.formal-detail-link:hover {
+  background: linear-gradient(135deg, #b68d40, #d49b4b);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(182, 141, 64, 0.4);
+}
+
+.venue-map-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(182, 141, 64, 0.15);
+  color: inherit;
+  transition: background 0.3s;
+}
+
+.formal-detail-link:hover .venue-map-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
 /* =====================================================================
    8. Ceremony & Celebration Cards (Distinctive Arch Cards)
    ===================================================================== */
 .events-intro-line {
   font-family: var(--display);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--sage);
   margin-bottom: 3.5rem;
 }
@@ -1746,7 +2004,9 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 2.5rem;
+  gap: 3rem;
+  max-width: 1050px;
+  margin: 0 auto;
 }
 
 .arch-card {
@@ -1754,14 +2014,19 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 360px;
-  min-height: 640px;
-  padding: 3.5rem 2rem 2.5rem;
-  border-radius: 190px 190px 32px 32px;
+  width: clamp(330px, 45vw, 460px);
+  min-height: 670px;
+  padding: 4rem 2.4rem 2.6rem;
+  border-radius: 220px 220px 36px 36px;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14);
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.55s;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  box-shadow: 0 24px 55px -12px rgba(22, 72, 99, 0.16),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.85);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s ease;
   will-change: transform;
 }
 
@@ -1769,10 +2034,35 @@ img {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px dashed rgba(255, 255, 255, 0.38);
-  border-radius: 175px 175px 22px 22px;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 205px 205px 24px 24px;
   pointer-events: none;
   z-index: 0;
+}
+
+/* Glass reflection shine sweep across card */
+.arch-card::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    55deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 55%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.arch-card:hover::before {
+  transform: rotate(25deg) translateY(100%);
 }
 
 .arch-card > * {
@@ -1781,19 +2071,19 @@ img {
 }
 
 .arch-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
+  transform: translateY(-14px) scale(1.015);
+  box-shadow: 0 35px 75px -15px rgba(22, 72, 99, 0.25);
 }
 
-/* 1. Haldi & Mehendi Card (Saffron & Warm Yellow) */
+/* 1. Haldi, Mehendi & Sangeet Card (Warm Gold, Saffron & Frosted Glass) */
 .card-haldi {
-  background: linear-gradient(150deg, #fff3b0 0%, #f9c80e 45%, #ee6c1b 100%);
+  background: linear-gradient(155deg, rgba(255, 248, 220, 0.94) 0%, rgba(255, 224, 130, 0.9) 45%, rgba(245, 166, 35, 0.92) 100%);
   color: #4a2100;
-  border: 1px solid rgba(255, 243, 176, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .card-haldi:hover {
-  transform: translateY(-12px) rotate(-1deg);
+  transform: translateY(-14px) rotate(-1deg) scale(1.015);
 }
 
 .card-haldi .arch-graphic, .card-haldi .event-script-title {
@@ -1804,34 +2094,15 @@ img {
   color: #5c2500;
 }
 
-/* 2. Baraat & Sangeet Card (Champagne, Cream & Gold) */
-.card-betrothal {
-  background: linear-gradient(150deg, #fffdf5 0%, #f7e6c4 50%, #d4b06a 100%);
-  color: #4a3b2c;
-  border: 1px solid rgba(232, 211, 158, 0.6);
-}
-
-.card-betrothal:hover {
-  transform: translateY(-12px) rotate(1deg);
-}
-
-.card-betrothal .arch-graphic, .card-betrothal .event-script-title {
-  color: #8c531b;
-}
-
-.card-betrothal .save-the-date-tag, .card-betrothal .day-name, .card-betrothal .month-year {
-  color: #8c531b;
-}
-
-/* 3. Wedding Ceremony (Deep Burgundy & Muted Gold) */
+/* 2. Baraat & Shubh Vivah Card (Deep Royal Velvet Burgundy & Gold) */
 .card-matrimony {
-  background: linear-gradient(150deg, #5c1822 0%, #370617 55%, #1f030c 100%);
-  color: #f8efea;
-  border: 1px solid rgba(255, 209, 102, 0.45);
+  background: linear-gradient(155deg, rgba(92, 24, 34, 0.96) 0%, rgba(55, 6, 23, 0.97) 55%, rgba(31, 3, 12, 0.98) 100%);
+  color: #fdf6ee;
+  border: 1px solid rgba(245, 214, 142, 0.55);
 }
 
 .card-matrimony:hover {
-  transform: translateY(-12px) rotate(1deg);
+  transform: translateY(-14px) rotate(1deg) scale(1.015);
 }
 
 .card-matrimony .arch-graphic, .card-matrimony .event-script-title {
@@ -2011,16 +2282,36 @@ img {
    9. RSVP & Blessings Section
    ===================================================================== */
 .rsvp-shell {
+  position: relative;
   max-width: 680px;
   margin: 0 auto;
-  padding: 4rem 3rem;
-  border-radius: 24px;
-  background: var(--parchment);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 16px 40px -10px rgba(40, 54, 39, 0.12);
+  padding: 4.2rem 3.2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 55px -12px rgba(22, 72, 99, 0.15),
+              0 0 0 1px rgba(182, 141, 64, 0.2),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
   text-align: left;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rsvp-shell::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(182, 141, 64, 0.35);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.rsvp-shell:hover {
+  transform: translateY(-8px) scale(1.008);
+  box-shadow: 0 32px 70px -15px rgba(22, 72, 99, 0.22),
+              0 0 0 1px rgba(214, 163, 71, 0.35);
 }
 
 .rsvp-note {

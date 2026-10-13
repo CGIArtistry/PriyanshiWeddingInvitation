@@ -52,7 +52,19 @@ export const FormalCard = () => {
               <MapPin size={14} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
               Wedding Venue
             </span>
-            <span className="formal-detail-val">{formalCard.venuePlaceholder}</span>
+            {formalCard.mapUrl ? (
+              <a
+                href={formalCard.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="formal-detail-val formal-detail-link"
+                title="Open Srishti Club on Google Maps"
+              >
+                {formalCard.venuePlaceholder} <span className="venue-map-badge">📍 View on Maps</span>
+              </a>
+            ) : (
+              <span className="formal-detail-val">{formalCard.venuePlaceholder}</span>
+            )}
           </div>
 
           <div className="formal-detail-item">
