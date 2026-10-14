@@ -88,9 +88,15 @@ export const FormalCard = () => {
 
           {/* Central Sacred Knot / Weds Seal */}
           <div className="formal-weds-seal" aria-hidden="true">
-            <span className="weds-knot-symbol">{c.wedsLigature}</span>
-            <span className="weds-ampersand">&amp;</span>
-            <span className="weds-knot-sub">{c.wedsSub}</span>
+            {c.wedsSub ? (
+              <>
+                <span className="weds-knot-symbol">{c.wedsLigature}</span>
+                <span className="weds-ampersand">&amp;</span>
+                <span className="weds-knot-sub">{c.wedsSub}</span>
+              </>
+            ) : (
+              <span className="weds-single-symbol">{c.wedsLigature}</span>
+            )}
           </div>
 
           {/* Bride's Family Side */}

@@ -31,12 +31,12 @@ export const CeremonyCards = () => {
     viewMap: "View Map",
     addToCalendar: "Add To Calendar",
     dayTabs: [
-      { id: "all", label: "All Events", sub: "समस्त 9 कार्यक्रम" },
+      { id: "all", label: "All Events", sub: "समस्त 10 कार्यक्रम" },
       { id: "08", label: "8 Dec", sub: "खल मिट्टी" },
       { id: "09", label: "9 Dec", sub: "हल्दी पूजन" },
       { id: "10", label: "10 Dec", sub: "मंडप" },
       { id: "11", label: "11 Dec", sub: "मायन · मामेरा · संगीत" },
-      { id: "12", label: "12 Dec", sub: "सगाई · बारात · विवाह" },
+      { id: "12", label: "12 Dec", sub: "सगाई · बारात · स्वरुचिभोज · विवाह" },
     ],
   };
 
