@@ -3610,9 +3610,16 @@ footer strong {
 }
 
 @media (max-width: 768px) {
+  .wedding-page {
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-bottom: max(4.5rem, calc(4rem + env(safe-area-inset-bottom, 12px)));
+  }
+
   .hero {
     min-height: 100svh;
-    padding: clamp(3.8rem, 8vh, 5.2rem) 1.2rem clamp(2.5rem, 5vh, 4rem);
+    min-height: 100dvh;
+    padding: clamp(3.2rem, 7vh, 4.8rem) 1.2rem clamp(2.2rem, 5vh, 3.6rem);
   }
   .hero::before {
     background-position: 28% top;
@@ -3620,79 +3627,141 @@ footer strong {
     background-repeat: no-repeat;
   }
   .monogram-badge {
-    font-size: clamp(3.8rem, 18vw, 5rem);
+    font-size: clamp(3.2rem, 16vw, 4.8rem);
   }
   .hero-title {
-    font-size: clamp(2rem, 9vw, 3.4rem);
+    font-size: clamp(2rem, 8.5vw, 3.2rem);
   }
   .scripture-pill {
-    padding: 1.2rem 1.4rem;
+    padding: 1.1rem 1.3rem;
+    max-width: min(94vw, 680px);
+    width: 100%;
+    box-sizing: border-box;
   }
   .royal-envelope {
-    padding: 3rem 1.2rem;
+    padding: clamp(2.4rem, 6vw, 3rem) clamp(1rem, 3.5vw, 1.4rem);
+    width: min(92vw, 500px);
+    box-sizing: border-box;
   }
   .countdown-card {
-    gap: 0.5rem;
-    padding: 1rem 0.6rem;
+    gap: clamp(0.25rem, 1.5vw, 0.5rem);
+    padding: 1rem clamp(0.4rem, 2vw, 0.8rem);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .timer-num {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+  .timer-label {
+    font-size: clamp(0.48rem, 1.8vw, 0.6rem);
+    letter-spacing: 0.12em;
   }
   .promise-section {
-    padding: 5rem 1rem;
+    padding: 4.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   .photo-stage {
     gap: 0.6rem;
+    max-width: 100%;
   }
   .interactive-photo img {
     height: 300px;
+    max-width: 100%;
   }
   .gallery-item {
     width: 250px;
     height: 340px;
   }
   .formal-card, .rsvp-shell {
-    padding: 3rem 1.2rem;
+    padding: clamp(2.2rem, 5vw, 3rem) clamp(1rem, 3.5vw, 1.4rem);
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .formal-family-layout {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    width: 100%;
+  }
+  .ceremony-tabs-container {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.45rem;
+  }
+  .ceremony-tab-pill {
+    padding: 0.5rem clamp(0.7rem, 2.2vw, 1.1rem);
+  }
+  .arch-cards-grid {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .arch-card {
     border-radius: 140px 140px 24px 24px;
-    min-height: 580px;
-    padding: 3rem 1.5rem 2rem;
+    min-height: auto;
+    padding: 3rem 1.4rem 2rem;
+    width: min(100%, 380px);
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .event-script-title {
-    font-size: 2.15rem;
+    font-size: clamp(1.8rem, 6.5vw, 2.2rem);
     line-height: 1.25;
   }
   .floating-audio-pill {
-    bottom: 1rem;
-    right: 1rem;
-    padding: 0.5rem 0.85rem;
+    bottom: calc(4.6rem + env(safe-area-inset-bottom, 10px));
+    right: max(0.85rem, env(safe-area-inset-right, 10px));
+    padding: 0.45rem 0.8rem;
     z-index: 10000;
   }
   .floating-nav-dock {
     top: auto;
-    bottom: 1rem;
-    width: calc(100% - 1.5rem);
-    max-width: 480px;
+    bottom: max(0.65rem, env(safe-area-inset-bottom, 10px));
+    width: calc(100% - 1.2rem);
+    max-width: 440px;
+    z-index: 9998;
   }
   .floating-nav-capsule {
     width: 100%;
     justify-content: space-between;
-    padding: 0.35rem 0.55rem;
-    gap: 0.3rem;
+    padding: 0.32rem 0.45rem;
+    gap: 0.15rem;
+  }
+  .nav-dock-monogram {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .dock-monogram-initials {
+    font-size: 0.68rem;
+  }
+  .nav-dock-divider {
+    height: 18px;
+    margin: 0 0.1rem;
+    opacity: 0.5;
+  }
+  .nav-dock-links {
+    gap: 0.1rem;
   }
   .nav-dock-link {
-    padding: 0.35rem 0.5rem;
+    padding: 0.35rem 0.42rem;
     font-size: 0.74rem;
   }
   .dock-link-text {
     display: none;
   }
   .floating-back-to-top {
-    bottom: 4.8rem;
-    left: 1rem;
+    bottom: calc(4.6rem + env(safe-area-inset-bottom, 10px));
+    left: max(0.85rem, env(safe-area-inset-left, 10px));
     width: 42px;
     height: 42px;
+    z-index: 9997;
   }
 }
 
@@ -3703,8 +3772,8 @@ footer strong {
     background-repeat: no-repeat;
   }
   .portrait-bubble {
-    width: clamp(230px, 66vw, 300px);
-    height: clamp(230px, 66vw, 300px);
+    width: clamp(220px, 62vmin, 300px);
+    height: clamp(220px, 62vmin, 300px);
     aspect-ratio: 1 / 1;
   }
   .portrait-orbit {
@@ -3716,6 +3785,7 @@ footer strong {
   .portal-enter-pill {
     padding: 0.75rem 1.6rem;
     gap: 0.7rem;
+    max-width: min(90vw, 360px);
   }
   .pill-title {
     font-size: 0.8rem;
@@ -3726,16 +3796,20 @@ footer strong {
   }
   .countdown-card {
     grid-template-columns: repeat(4, 1fr);
+    gap: 0.25rem;
+    padding: 0.85rem 0.4rem;
   }
   .timer-num {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
   .timer-label {
-    font-size: 0.55rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
   }
   .btn-row {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
   .promise-highlight-btn {
     width: 100%;
@@ -3744,12 +3818,13 @@ footer strong {
   .photo-stage {
     flex-direction: column;
     max-width: 320px;
+    width: 100%;
   }
   .interactive-photo:first-child, .interactive-photo:nth-child(2) {
     transform: none !important;
   }
   .interactive-photo img {
-    height: 280px;
+    height: 260px;
   }
   .promise-stamp {
     display: none;
@@ -3760,6 +3835,38 @@ footer strong {
   }
   .arch-card {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 2.6rem 1.2rem 1.8rem;
+    border-radius: 120px 120px 20px 20px;
+  }
+  .arch-card::after {
+    border-radius: 110px 110px 16px 16px;
+    inset: 7px;
+  }
+  .event-script-title {
+    font-size: 1.7rem;
+  }
+  .venue-bottom-banner {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.75rem;
+  }
+  .add-to-calendar-btn {
+    padding: 0.65rem 0.9rem;
+  }
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+    box-sizing: border-box;
+  }
+  .rsvp-contact-cards {
+    flex-direction: column;
+    width: 100%;
+  }
+  .rsvp-contact-chip {
+    width: 100%;
+    justify-content: center;
   }
 }
 
