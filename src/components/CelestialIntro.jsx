@@ -9,6 +9,9 @@ export const CelestialIntro = ({ onEnter }) => {
   const haloRef = useRef(null);
 
   useEffect(() => {
+    // Keep heavy pointermove parallax and star bursts for desktop pointer only
+    if (window.innerWidth <= 768) return;
+
     const container = containerRef.current;
     if (!container) return;
 

@@ -5,6 +5,9 @@ export const DrawingTrailCanvas = () => {
   const pointsRef = useRef([]);
 
   useEffect(() => {
+    // Keep interactive starlight drawing trail for desktop mouse pointers
+    if (window.innerWidth <= 768) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");

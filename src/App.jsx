@@ -37,11 +37,17 @@ export function App() {
     setIsTransitioning(true);
     setShouldPlayAudio(true);
 
-    // Ethereal transition duration matches glow-wash animation
+    const isMobile = window.innerWidth <= 768;
+    const delay = isMobile ? 280 : 600;
+
+    // Transition timing matching mobile fade or desktop glow-wash
     setTimeout(() => {
       setHasEntered(true);
       window.scrollTo({ top: 0, behavior: "instant" });
-    }, 600);
+      if (isMobile) {
+        setTimeout(() => setIsTransitioning(false), 380);
+      }
+    }, delay);
   };
 
   // Lightbox photo list for prev/next

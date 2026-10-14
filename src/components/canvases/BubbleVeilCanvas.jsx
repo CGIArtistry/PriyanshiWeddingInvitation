@@ -4,6 +4,9 @@ export const BubbleVeilCanvas = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Only run on desktop screens; SparkleSnowCanvas handles mobile atmosphere smoothly
+    if (window.innerWidth <= 768) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");

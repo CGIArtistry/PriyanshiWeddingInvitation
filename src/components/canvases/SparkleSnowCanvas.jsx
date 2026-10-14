@@ -16,9 +16,13 @@ export const SparkleSnowCanvas = () => {
     const stars = [];
     const TAU = Math.PI * 2;
 
+    const isMobile = () => window.innerWidth <= 768;
+
     const initPetals = () => {
       petals.length = 0;
-      const count = Math.round(Math.min(Math.max((width * height) / 22000, 10), 32));
+      const count = isMobile()
+        ? 8
+        : Math.round(Math.min(Math.max((width * height) / 22000, 10), 32));
       for (let i = 0; i < count; i++) {
         petals.push({
           x: Math.random() * width,
@@ -37,7 +41,9 @@ export const SparkleSnowCanvas = () => {
 
     const initStars = () => {
       stars.length = 0;
-      const count = Math.round(Math.min(Math.max((width * height) / 9000, 24), 85));
+      const count = isMobile()
+        ? 22
+        : Math.round(Math.min(Math.max((width * height) / 9000, 24), 85));
       for (let i = 0; i < count; i++) {
         stars.push({
           x: Math.random() * width,
@@ -46,7 +52,7 @@ export const SparkleSnowCanvas = () => {
           drift: Math.random() * 2 - 1,
           fall: 0.35 + Math.random() * 0.95,
           rotation: Math.random() * TAU,
-          spin: (Math.random() * 2 - 1) * 0.012,
+          spin: (Math.random() - 0.5) * 0.02,
           twinkle: Math.random() * TAU,
           twinkleSpeed: 0.012 + Math.random() * 0.03,
         });
@@ -54,7 +60,7 @@ export const SparkleSnowCanvas = () => {
     };
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = isMobile() ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width * dpr;
