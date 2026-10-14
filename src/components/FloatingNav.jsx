@@ -38,7 +38,7 @@ export const FloatingNav = () => {
       setIsVisible(scrollY > 320);
 
       // Active section detection
-      const sections = ["save-the-date", "story", "gallery", "invitation", "events", "rsvp"];
+      const sections = ["save-the-date", "story", "gallery", "invitation", "events"];
       let current = "";
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -97,13 +97,6 @@ export const FloatingNav = () => {
       labelHi: "कार्यक्रम",
       labelEn: "Events",
       icon: <Clock size={14} />,
-    },
-    {
-      id: "rsvp",
-      href: "#rsvp",
-      labelHi: "आशीर्वाद",
-      labelEn: "RSVP",
-      icon: <Heart size={14} />,
     },
   ];
 

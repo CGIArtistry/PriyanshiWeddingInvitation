@@ -6,7 +6,6 @@ import { OurStory } from "./components/OurStory";
 import { GalleryCarousel } from "./components/GalleryCarousel";
 import { FormalCard } from "./components/FormalCard";
 import { CeremonyCards } from "./components/CeremonyCards";
-import { RsvpSection } from "./components/RsvpSection";
 import { HeavenlyFinale } from "./components/HeavenlyFinale";
 import { AudioPlayer } from "./components/AudioPlayer";
 import { LightboxModal } from "./components/LightboxModal";
@@ -92,7 +91,7 @@ export function App() {
     );
 
     const targets = document.querySelectorAll(
-      ".section-wrap, .promise-section, .royal-reveal-section, .carousel-shell, .formal-card, .arch-card, .rsvp-shell"
+      ".section-wrap, .promise-section, .royal-reveal-section, .carousel-shell, .formal-card, .arch-card"
     );
 
     targets.forEach((el) => {
@@ -160,10 +159,7 @@ export function App() {
             {/* 8. Ceremony & Celebration Cards */}
             <CeremonyCards />
 
-            {/* 9. Warm Wishes & RSVP Section */}
-            <RsvpSection />
-
-            {/* 10. Heavenly Finale & Footer */}
+            {/* 9. Heavenly Finale & Footer */}
             <HeavenlyFinale />
           </main>
 
