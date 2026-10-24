@@ -124,7 +124,7 @@ export const FloatingNav = () => {
             aria-label="Scroll to top"
           >
             <span className="dock-monogram-initials">
-              {couple.groom.firstName[0]}&amp;{couple.bride.firstName[0]}
+              {couple.bride.firstName[0]}&amp;{couple.groom.firstName[0]}
             </span>
           </button>
 

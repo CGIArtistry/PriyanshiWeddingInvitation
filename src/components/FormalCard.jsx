@@ -69,19 +69,19 @@ export const FormalCard = () => {
 
         {/* Traditional Two-Sided Lineage & Couple Pairing */}
         <div className="formal-family-layout">
-          {/* Groom's Family Side */}
-          <div className="family-column groom-column">
-            <div className="family-side-tag">{c.groomSideTag}</div>
-            <h3 className="family-person-name">{c.groomName}</h3>
+          {/* Bride's Family Side */}
+          <div className="family-column bride-column">
+            <div className="family-side-tag">{c.brideSideTag}</div>
+            <h3 className="family-person-name">{c.brideName}</h3>
 
             <div className="family-kinship-card">
               <div className="kinship-row">
-                <span className="kinship-badge">{c.groomGrandparentsLabel}</span>
-                <span className="kinship-names">{c.groomGrandparents}</span>
+                <span className="kinship-badge">{c.brideGrandparentsLabel}</span>
+                <span className="kinship-names">{c.brideGrandparents}</span>
               </div>
               <div className="kinship-row">
-                <span className="kinship-badge">{c.groomParentsLabel}</span>
-                <span className="kinship-names">{c.groomParents}</span>
+                <span className="kinship-badge">{c.brideParentsLabel}</span>
+                <span className="kinship-names">{c.brideParents}</span>
               </div>
             </div>
           </div>
@@ -99,19 +99,19 @@ export const FormalCard = () => {
             )}
           </div>
 
-          {/* Bride's Family Side */}
-          <div className="family-column bride-column">
-            <div className="family-side-tag">{c.brideSideTag}</div>
-            <h3 className="family-person-name">{c.brideName}</h3>
+          {/* Groom's Family Side */}
+          <div className="family-column groom-column">
+            <div className="family-side-tag">{c.groomSideTag}</div>
+            <h3 className="family-person-name">{c.groomName}</h3>
 
             <div className="family-kinship-card">
               <div className="kinship-row">
-                <span className="kinship-badge">{c.brideGrandparentsLabel}</span>
-                <span className="kinship-names">{c.brideGrandparents}</span>
+                <span className="kinship-badge">{c.groomGrandparentsLabel}</span>
+                <span className="kinship-names">{c.groomGrandparents}</span>
               </div>
               <div className="kinship-row">
-                <span className="kinship-badge">{c.brideParentsLabel}</span>
-                <span className="kinship-names">{c.brideParents}</span>
+                <span className="kinship-badge">{c.groomParentsLabel}</span>
+                <span className="kinship-names">{c.groomParents}</span>
               </div>
             </div>
           </div>

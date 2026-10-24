@@ -1,5 +1,5 @@
 /* =====================================================================
-   Abhishek & Priyanshi — Cinematic Wedding Invitation Stylesheet
+   Priyanshi & Abhishek — Cinematic Wedding Invitation Stylesheet
    ===================================================================== */
 
 :root {
@@ -923,7 +923,7 @@ img {
   transition: transform 0.3s;
 }
 
-.monogram-letter-p {
+.monogram-letter + .monogram-letter {
   margin-left: 0.08em;
 }
 

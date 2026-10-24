@@ -143,11 +143,11 @@ export const CelestialIntro = ({ onEnter }) => {
             className="portrait-bubble"
             type="button"
             onClick={onEnter}
-            aria-label={`${intro.enterButtonText} — ${weddingConfig.couple.groom.firstName} & ${weddingConfig.couple.bride.firstName}`}
+            aria-label={`${intro.enterButtonText} — ${weddingConfig.couple.bride.firstName} & ${weddingConfig.couple.groom.firstName}`}
           >
             <span className="bubble-glass" aria-hidden="true" />
             <span className="bubble-photo">
-              <img src={intro.centralPhoto} alt="Abhishek & Priyanshi Wedding Logo" draggable="false" />
+              <img src={intro.centralPhoto} alt="Priyanshi & Abhishek Wedding Logo" draggable="false" />
             </span>
             <span className="bubble-sheen" aria-hidden="true" />
             <span className="bubble-halo" aria-hidden="true" />

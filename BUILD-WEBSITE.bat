@@ -1,7 +1,7 @@
 @echo off
-title Abhishek & Priyanshi — Build Website
+title Priyanshi & Abhishek — Build Website
 echo ========================================================
-echo   Abhishek & Priyanshi — Cinematic Wedding Invitation
+echo   Priyanshi & Abhishek — Cinematic Wedding Invitation
 echo   Building production and offline bundle...
 echo ========================================================
 

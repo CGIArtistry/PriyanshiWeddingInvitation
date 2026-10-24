@@ -81,9 +81,9 @@ export const SaveTheDateReveal = () => {
   const calendarUrl = (() => {
     const start = new Date(weddingDate.iso);
     const end = new Date(start.getTime() + 6 * 60 * 60 * 1000); // 6 hours event
-    const title = `Wedding Vivah: ${couple.groom.firstName} & ${couple.bride.firstName}`;
+    const title = `Wedding Vivah: ${couple.bride.firstName} & ${couple.groom.firstName}`;
     const location = weddingDate.venuePlaceholder;
-    const details = `You are cordially invited to celebrate the wedding of ${couple.groom.fullName} and ${couple.bride.fullName}.\n\nDate: ${weddingDate.displayDay} ${weddingDate.displayMonth} ${weddingDate.displayYear}\nVenue: ${weddingDate.venuePlaceholder}\n\n${couple.hashtag}`;
+    const details = `You are cordially invited to celebrate the wedding of ${couple.bride.fullName} and ${couple.groom.fullName}.\n\nDate: ${weddingDate.displayDay} ${weddingDate.displayMonth} ${weddingDate.displayYear}\nVenue: ${weddingDate.venuePlaceholder}\n\n${couple.hashtag}`;
 
     const params = new URLSearchParams({
       action: "TEMPLATE",
@@ -126,7 +126,7 @@ export const SaveTheDateReveal = () => {
                 {saveTheDate.logo ? (
                   <img
                     src={saveTheDate.logo}
-                    alt="Abhishek & Priyanshi Royal Wedding Logo"
+                    alt="Priyanshi & Abhishek Royal Wedding Logo"
                     className="wax-seal-logo-img"
                   />
                 ) : (
@@ -143,14 +143,14 @@ export const SaveTheDateReveal = () => {
               <div className="revealed-wedding-logo-crest">
                 <img
                   src={saveTheDate.logo}
-                  alt="Abhishek & Priyanshi Royal Wedding Emblem"
+                  alt="Priyanshi & Abhishek Royal Wedding Emblem"
                   className="revealed-wedding-logo"
                 />
               </div>
             )}
             <div className="label-badge">{saveTheDate.ceremonyTitle}</div>
             <h3 className="script-name">
-              {couple.groom.firstName} &amp; {couple.bride.firstName}
+              {couple.bride.firstName} &amp; {couple.groom.firstName}
             </h3>
 
             <div className="royal-date-display">

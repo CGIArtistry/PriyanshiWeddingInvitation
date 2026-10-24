@@ -29,9 +29,9 @@ export const HeavenlyFinale = () => {
           </p>
 
           <div className="heavenly-names">
-            <span>{couple.groom.firstName}</span>
-            <span className="ampersand">&amp;</span>
             <span>{couple.bride.firstName}</span>
+            <span className="ampersand">&amp;</span>
+            <span>{couple.groom.firstName}</span>
           </div>
 
           <div className="heavenly-divider">

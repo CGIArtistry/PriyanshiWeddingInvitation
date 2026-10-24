@@ -67,7 +67,7 @@ export const RsvpSection = () => {
       guest3: "3 Persons",
       guest4: "4+ Family",
       messageLabel: "Your Blessings & Message for the Couple",
-      messagePlaceholder: "Leave a warm blessing for Abhishek & Priyanshi...",
+      messagePlaceholder: "Leave a warm blessing for Priyanshi & Abhishek...",
       submitBtn: "Send Blessings & RSVP",
       thankTitle: "Thank You",
       thankMessage: "Your warm wishes and RSVP have been received with love.",

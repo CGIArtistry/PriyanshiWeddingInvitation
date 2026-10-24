@@ -26,17 +26,15 @@ export const CeremonyCards = () => {
   const sec = (eventsSection && eventsSection[lang]) || eventsSection?.hi || {
     badge: "Sacred Moments · Ceremony Schedule",
     title: "Ceremony & Celebrations",
-    intro: "08 से 12 दिसम्बर 2026 · समस्त मांगलिक आयोजनों में आपकी गरिमामयी उपस्थिति प्रार्थनीय है",
+    intro: "10 से 12 दिसम्बर 2026 · समस्त मांगलिक आयोजनों में आपकी गरिमामयी उपस्थिति प्रार्थनीय है",
     saveTheDateTag: "Save The Date",
     viewMap: "View Map",
     addToCalendar: "Add To Calendar",
     dayTabs: [
-      { id: "all", label: "All Events", sub: "समस्त 10 कार्यक्रम" },
-      { id: "08", label: "8 Dec", sub: "खल मिट्टी" },
-      { id: "09", label: "9 Dec", sub: "हल्दी पूजन" },
-      { id: "10", label: "10 Dec", sub: "मंडप" },
-      { id: "11", label: "11 Dec", sub: "मायन · मामेरा · संगीत" },
-      { id: "12", label: "12 Dec", sub: "सगाई · बारात · स्वरुचिभोज · विवाह" },
+      { id: "all", label: "All Events", sub: "समस्त 8 कार्यक्रम" },
+      { id: "10", label: "10 Dec", sub: "Mata Poojan" },
+      { id: "11", label: "11 Dec", sub: "Mandap · Mamera · Sangeet" },
+      { id: "12", label: "12 Dec", sub: "Sagai · Baraat · Reception · Vivah" },
     ],
   };
 
@@ -51,7 +49,7 @@ export const CeremonyCards = () => {
   };
 
   const getCalendarUrl = (evData) => {
-    const title = `${evData.title} · ${couple.groom.firstName} & ${couple.bride.firstName}`;
+    const title = `${evData.title} · ${couple.bride.firstName} & ${couple.groom.firstName}`;
     const location = `${evData.venue}, ${evData.address}`;
     const details = `${evData.description}\n\nTime: ${evData.time}\nVenue: ${evData.venue}\n${couple.hashtag}`;
 

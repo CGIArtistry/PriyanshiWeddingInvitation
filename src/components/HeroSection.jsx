@@ -74,8 +74,8 @@ export const HeroSection = () => {
         title="Tap for love & sparks!"
       >
         <span className="monogram-letters">
-          <span className="monogram-letter monogram-letter-a">A</span>
           <span className="monogram-letter monogram-letter-p">P</span>
+          <span className="monogram-letter monogram-letter-a">A</span>
           
           <span className="monogram-heart" aria-hidden="true">♥</span>
           
@@ -91,9 +91,9 @@ export const HeroSection = () => {
       <div className="hero-subtitle">{hero.subtitle}</div>
 
       <h1 className="hero-title">
-        <span className="name-abhishek">{couple.groom.firstName}</span>
-        <span className="ampersand">&amp;</span>
         <span className="name-priyanshi">{couple.bride.firstName}</span>
+        <span className="ampersand">&amp;</span>
+        <span className="name-abhishek">{couple.groom.firstName}</span>
       </h1>
 
       <div className="hashtag">{couple.hashtag}</div>

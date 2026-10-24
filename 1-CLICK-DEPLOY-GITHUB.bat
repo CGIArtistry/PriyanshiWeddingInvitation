@@ -1,7 +1,7 @@
 @echo off
-title Abhishek & Priyanshi — Deploy to GitHub Pages
+title Priyanshi & Abhishek — Deploy to GitHub Pages
 echo ========================================================
-echo   Abhishek & Priyanshi — Cinematic Wedding Invitation
+echo   Priyanshi & Abhishek — Cinematic Wedding Invitation
 echo   Building and Deploying to GitHub Pages (gh-pages)...
 echo ========================================================
 
@@ -38,6 +38,6 @@ echo.
 echo ========================================================
 echo   Deployment successful!
 echo   Website will update in 1-2 minutes at:
-echo   https://cgiartistry.github.io/WeddingInvitation/
+echo   https://cgiartistry.github.io/PriyanshiWeddingInvitation/
 echo ========================================================
 pause

@@ -1,4 +1,4 @@
-# Abhishek & Priyanshi — Cinematic Wedding Invitation Website 💍✨
+# Priyanshi & Abhishek — Cinematic Wedding Invitation Website 💍✨
 
 A complete, responsive, luxury wedding invitation website crafted for **Abhishek Pal & Priyanshi Sharma**, inspired by modern cinematic design aesthetics.
 
@@ -174,4 +174,4 @@ Replace `public/music/wedding-song.mp3` with your preferred romantic song or aud
 
 ---
 
-*Wishing Abhishek & Priyanshi a lifetime of love, joy, and sacred togetherness!* 💖✨
+*Wishing Priyanshi & Abhishek a lifetime of love, joy, and sacred togetherness!* 💖✨

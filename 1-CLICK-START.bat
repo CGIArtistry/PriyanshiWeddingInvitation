@@ -1,7 +1,7 @@
 @echo off
-title Abhishek & Priyanshi — Wedding Website
+title Priyanshi & Abhishek — Wedding Website
 echo ========================================================
-echo   Abhishek & Priyanshi — Cinematic Wedding Invitation
+echo   Priyanshi & Abhishek — Cinematic Wedding Invitation
 echo   Starting local development server...
 echo ========================================================
 
