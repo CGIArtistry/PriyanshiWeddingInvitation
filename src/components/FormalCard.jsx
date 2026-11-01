@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { weddingConfig } from "../config/weddingConfig";
 import { MapPin, Clock, Calendar, Phone, Languages } from "lucide-react";
+import bgFormalInvitation from "../assets/images/bg_formal_invitation.jpg";
 
 export const FormalCard = () => {
   const { formalCard } = weddingConfig;
@@ -24,7 +25,12 @@ export const FormalCard = () => {
   const c = formalCard[lang] || formalCard.hi;
 
   return (
-    <section className="section-wrap" id="invitation">
+    <section className={`section-wrap formal-invitation-section ${lang === "hi" ? "is-hindi-version" : "is-english-version"}`} id="invitation">
+      {/* Royal Heritage Palace Courtyard Background */}
+      <div className="formal-section-bg" style={{ backgroundImage: `url(${bgFormalInvitation})` }} aria-hidden="true">
+        <div className="formal-section-bg-overlay" />
+      </div>
+
       <div className={`formal-card ${lang === "hi" ? "is-hindi-version" : "is-english-version"}`} lang={lang}>
         {/* Language Selection Switcher */}
         <div className="formal-lang-toolbar">

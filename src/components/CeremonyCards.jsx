@@ -2,10 +2,39 @@ import React, { useState, useEffect } from "react";
 import { weddingConfig } from "../config/weddingConfig";
 import { MapPin, ExternalLink, Calendar as CalendarIcon, Sparkles } from "lucide-react";
 
+// Import authentic atmospheric ceremony backgrounds
+import bgKhalMitti from "../assets/images/ceremonies/bg_khal_mitti.jpg";
+import bgHaldi from "../assets/images/ceremonies/bg_haldi.jpg";
+import bgMandap from "../assets/images/ceremonies/bg_mandap.jpg";
+import bgMaayan from "../assets/images/ceremonies/bg_maayan.jpg";
+import bgMamera from "../assets/images/ceremonies/bg_mamera.jpg";
+import bgSangeet from "../assets/images/ceremonies/bg_sangeet.jpg";
+import bgSagai from "../assets/images/ceremonies/bg_sagai.jpg";
+import bgBaraat from "../assets/images/ceremonies/bg_baraat.jpg";
+import bgReception from "../assets/images/ceremonies/bg_reception.jpg";
+import bgVivah from "../assets/images/ceremonies/bg_vivah.jpg";
+
+const ceremonyBackgrounds = {
+  "mata-poojan": bgHaldi,
+  "mandap": bgMandap,
+  "mamera": bgMamera,
+  "mahila-sangeet": bgSangeet,
+  "sagai": bgSagai,
+  "baraat-swagat": bgBaraat,
+  "varmala-reception": bgReception,
+  "shubh-vivah": bgVivah,
+  // Also include groom aliases for robustness
+  "khal-mitti": bgKhalMitti,
+  "mata-poojan-haldi": bgHaldi,
+  "maayan-poojan": bgMaayan,
+  "var-nikasi": bgBaraat,
+};
+
 export const CeremonyCards = () => {
   const { events, couple, eventsSection } = weddingConfig;
   const [activeDay, setActiveDay] = useState("all");
   const [lang, setLang] = useState("hi");
+  const [hoveredEventId, setHoveredEventId] = useState(null);
 
   // Listen for language synchronization from FormalCard or global toggle
   useEffect(() => {
@@ -69,163 +98,190 @@ export const CeremonyCards = () => {
     return `https://www.google.com/maps/search/?api=1&query=${query}`;
   };
 
+  // Active ceremony background: follows pointer hover immediately, or active day tab, or defaults to Mata Poojan
+  const activeBgId = hoveredEventId || (
+    activeDay === "10" ? "mata-poojan" :
+    activeDay === "11" ? "mandap" :
+    activeDay === "12" ? "shubh-vivah" :
+    "mata-poojan"
+  );
+
   return (
     <section
-      className={`section-wrap ${lang === "hi" ? "is-hindi-version" : "is-english-version"}`}
+      className={`section-wrap ceremonies-section ${lang === "hi" ? "is-hindi-version" : "is-english-version"}`}
       id="events"
       lang={lang}
     >
-      <div className="section-intro">
-        {/* Bilingual Language Selection Toolbar */}
-        <div className="formal-lang-toolbar" style={{ marginBottom: "1.6rem" }}>
-          <div className="formal-lang-pill-group" role="tablist" aria-label="Select Events Language">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={lang === "hi"}
-              className={`lang-tab-pill ${lang === "hi" ? "is-active" : ""}`}
-              onClick={() => handleSelectLang("hi")}
-              title="मांगलिक कार्यक्रम हिन्दी में देखें"
-            >
-              <span className="lang-tab-primary">हिन्दी</span>
-              <span className="lang-tab-secondary">Hindi</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={lang === "en"}
-              className={`lang-tab-pill ${lang === "en" ? "is-active" : ""}`}
-              onClick={() => handleSelectLang("en")}
-              title="View Ceremony Schedule in English"
-            >
-              <span className="lang-tab-primary">English</span>
-              <span className="lang-tab-secondary">अंग्रेज़ी</span>
-            </button>
-          </div>
-        </div>
-
-        <div className="label-badge">
-          {lang === "hi" ? <span className="hindi-badge-text">{sec.badge}</span> : sec.badge}
-        </div>
-        <h2 className="main-heading">{sec.title}</h2>
-        <p className="events-intro-line">{sec.intro}</p>
-      </div>
-
-      {/* Interactive Day Filter Tabs */}
-      <div className="ceremony-tabs-container">
-        {dayTabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            className={`ceremony-tab-pill ${activeDay === tab.id ? "is-active" : ""}`}
-            onClick={() => setActiveDay(tab.id)}
-            title={`View ${tab.label} events`}
-          >
-            <span className="tab-pill-label">{tab.label}</span>
-            <span className="tab-pill-sub">{tab.sub}</span>
-          </button>
+      {/* Dynamic Ceremony Backgrounds that transition smoothly based on Pointer Hover */}
+      <div className="ceremony-dynamic-bg-container" aria-hidden="true">
+        {Object.entries(ceremonyBackgrounds).map(([id, bgUrl]) => (
+          <div
+            key={id}
+            className={`ceremony-bg-layer ${activeBgId === id ? "is-active" : ""}`}
+            style={{ backgroundImage: `url(${bgUrl})` }}
+          />
         ))}
+        <div className="ceremony-bg-overlay" />
       </div>
 
-      {/* Responsive Ceremonies Grid */}
-      <div className="arch-cards-grid">
-        {filteredEvents.map((event) => {
-          const ev = (lang === "hi" ? event.hi : event.en) || event.hi || event;
-          const title = ev.title || (lang === "hi" ? event.titleHindi : event.title);
-          const subtitle = ev.subtitle || event.subtitle;
-          const weekday = ev.weekday || (lang === "hi" ? event.weekdayHindi : event.weekday);
-          const monthDisplay = ev.month || (lang === "hi" ? "दिस" : event.month);
-          const time = ev.time || event.time;
-          const venue = ev.venue || event.venuePlaceholder;
-          const address = ev.address || event.addressPlaceholder;
-          const description = ev.description || event.description;
-          const saveTag =
-            ev.saveTheDateTag ||
-            (lang === "hi" ? `${weekday} · मांगलिक उत्सव` : `${weekday} · Save The Date`);
+      <div className="ceremony-content-inner">
+        <div className="section-intro">
+          {/* Bilingual Language Selection Toolbar */}
+          <div className="formal-lang-toolbar" style={{ marginBottom: "1.6rem" }}>
+            <div className="formal-lang-pill-group" role="tablist" aria-label="Select Events Language">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={lang === "hi"}
+                className={`lang-tab-pill ${lang === "hi" ? "is-active" : ""}`}
+                onClick={() => handleSelectLang("hi")}
+                title="मांगलिक कार्यक्रम हिन्दी में देखें"
+              >
+                <span className="lang-tab-primary">हिन्दी</span>
+                <span className="lang-tab-secondary">Hindi</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={lang === "en"}
+                className={`lang-tab-pill ${lang === "en" ? "is-active" : ""}`}
+                onClick={() => handleSelectLang("en")}
+                title="View Ceremony Schedule in English"
+              >
+                <span className="lang-tab-primary">English</span>
+                <span className="lang-tab-secondary">अंग्रेज़ी</span>
+              </button>
+            </div>
+          </div>
 
-          const calUrl = getCalendarUrl({
-            ...event,
-            title,
-            venue,
-            address,
-            description,
-            time,
-          });
-          const mapUrl = getMapsUrl({
-            ...event,
-            venue,
-            address,
-          });
+          <div className="label-badge">
+            {lang === "hi" ? <span className="hindi-badge-text">{sec.badge}</span> : sec.badge}
+          </div>
+          <h2 className="main-heading">{sec.title}</h2>
+          <p className="events-intro-line">{sec.intro}</p>
+        </div>
 
-          return (
-            <article
-              key={event.id}
-              className={`arch-card card-${event.type} ${
-                lang === "hi" ? "is-hindi-version" : "is-english-version"
-              }`}
-              lang={lang}
+        {/* Interactive Day Filter Tabs */}
+        <div className="ceremony-tabs-container">
+          {dayTabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`ceremony-tab-pill ${activeDay === tab.id ? "is-active" : ""}`}
+              onClick={() => setActiveDay(tab.id)}
+              title={`View ${tab.label} events`}
             >
-              <div>
-                {/* Auspicious Motif */}
-                <div className="arch-graphic">{event.motif}</div>
+              <span className="tab-pill-label">{tab.label}</span>
+              <span className="tab-pill-sub">{tab.sub}</span>
+            </button>
+          ))}
+        </div>
 
-                <div className="save-the-date-tag">{saveTag}</div>
-                <h3 className="event-script-title">{title}</h3>
-                <div className="event-subtitle-tag">{subtitle}</div>
+        {/* Responsive Ceremonies Grid */}
+        <div className="arch-cards-grid">
+          {filteredEvents.map((event) => {
+            const ev = (lang === "hi" ? event.hi : event.en) || event.hi || event;
+            const title = ev.title || (lang === "hi" ? event.titleHindi : event.title);
+            const subtitle = ev.subtitle || event.subtitle;
+            const weekday = ev.weekday || (lang === "hi" ? event.weekdayHindi : event.weekday);
+            const monthDisplay = ev.month || (lang === "hi" ? "दिस" : event.month);
+            const time = ev.time || event.time;
+            const venue = ev.venue || event.venuePlaceholder;
+            const address = ev.address || event.addressPlaceholder;
+            const description = ev.description || event.description;
+            const saveTag =
+              ev.saveTheDateTag ||
+              (lang === "hi" ? `${weekday} · मांगलिक उत्सव` : `${weekday} · Save The Date`);
 
-                {/* Calendar Date Display */}
-                <div className="date-row">
-                  <span className="day-name">{weekday}</span>
-                  <span className="day-number">{event.day}</span>
-                  <span className="month-year">
-                    {monthDisplay}
-                    <br />
-                    {event.year}
-                  </span>
+            const calUrl = getCalendarUrl({
+              ...event,
+              title,
+              venue,
+              address,
+              description,
+              time,
+            });
+            const mapUrl = getMapsUrl({
+              ...event,
+              venue,
+              address,
+            });
+
+            return (
+              <article
+                key={event.id}
+                className={`arch-card card-${event.type} ${
+                  lang === "hi" ? "is-hindi-version" : "is-english-version"
+                } ${activeBgId === event.id ? "is-hovered-ceremony" : ""}`}
+                lang={lang}
+                onMouseEnter={() => setHoveredEventId(event.id)}
+                onMouseLeave={() => setHoveredEventId(null)}
+                onTouchStart={() => setHoveredEventId(event.id)}
+                onFocus={() => setHoveredEventId(event.id)}
+                onBlur={() => setHoveredEventId(null)}
+              >
+                <div>
+                  {/* Auspicious Motif */}
+                  <div className="arch-graphic">{event.motif}</div>
+
+                  <div className="save-the-date-tag">{saveTag}</div>
+                  <h3 className="event-script-title">{title}</h3>
+                  <div className="event-subtitle-tag">{subtitle}</div>
+
+                  {/* Calendar Date Display */}
+                  <div className="date-row">
+                    <span className="day-name">{weekday}</span>
+                    <span className="day-number">{event.day}</span>
+                    <span className="month-year">
+                      {monthDisplay}
+                      <br />
+                      {event.year}
+                    </span>
+                  </div>
+
+                  <div className="time-pill-badge">◷ {time}</div>
+
+                  <p className="event-narrative">{description}</p>
                 </div>
 
-                <div className="time-pill-badge">◷ {time}</div>
+                {/* Card Footer with Location and Calendar Links */}
+                <div className="arch-card-footer">
+                  <a
+                    className="venue-bottom-banner"
+                    href={mapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={`View venue on Google Maps: ${venue}`}
+                  >
+                    <MapPin size={16} />
+                    <strong>{venue}</strong>
+                    <span>
+                      {address} · {lang === "hi" ? "गूगल मैप देखें" : "View Map"}
+                    </span>
+                  </a>
 
-                <p className="event-narrative">{description}</p>
-              </div>
-
-              {/* Card Footer with Location and Calendar Links */}
-              <div className="arch-card-footer">
-                <a
-                  className="venue-bottom-banner"
-                  href={mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  title={`View venue on Google Maps: ${venue}`}
-                >
-                  <MapPin size={16} />
-                  <strong>{venue}</strong>
-                  <span>
-                    {address} · {lang === "hi" ? "गूगल मैप देखें" : "View Map"}
-                  </span>
-                </a>
-
-                <a
-                  className="add-to-calendar-btn"
-                  href={calUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  title={`Add ${title} to Google Calendar`}
-                >
-                  <span className="calendar-btn-icon" aria-hidden="true">
-                    <span>{event.day}</span>
-                    <span style={{ fontSize: "0.55rem", opacity: 0.85 }}>{monthDisplay}</span>
-                  </span>
-                  <span className="calendar-btn-copy">
-                    <strong>{lang === "hi" ? "कैलेंडर में जोड़ें" : "Add To Calendar"}</strong>
-                    <span>{time}</span>
-                  </span>
-                  <ExternalLink size={14} style={{ marginLeft: "auto", opacity: 0.7 }} />
-                </a>
-              </div>
-            </article>
-          );
-        })}
+                  <a
+                    className="add-to-calendar-btn"
+                    href={calUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={`Add ${title} to Google Calendar`}
+                  >
+                    <span className="calendar-btn-icon" aria-hidden="true">
+                      <span>{event.day}</span>
+                      <span style={{ fontSize: "0.55rem", opacity: 0.85 }}>{monthDisplay}</span>
+                    </span>
+                    <span className="calendar-btn-copy">
+                      <strong>{lang === "hi" ? "कैलेंडर में जोड़ें" : "Add To Calendar"}</strong>
+                      <span>{time}</span>
+                    </span>
+                    <ExternalLink size={14} style={{ marginLeft: "auto", opacity: 0.7 }} />
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

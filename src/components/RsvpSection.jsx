@@ -45,7 +45,7 @@ export const RsvpSection = () => {
       guest2: "2 व्यक्ति (2 Persons)",
       guest3: "3 व्यक्ति (3 Persons)",
       guest4: "4+ सपरिवार (Family)",
-      messageLabel: "अभिषेक एवं प्रियंशी के लिए मंगल आशीष व संदेश",
+      messageLabel: "अभिषेक एवं प्रियांशी के लिए मंगल आशीष व संदेश",
       messagePlaceholder: "वर-वधू के लिए शुभकामना संदेश लिखें...",
       submitBtn: "आशीर्वाद संदेश भेजें",
       thankTitle: "हार्दिक धन्यवाद",

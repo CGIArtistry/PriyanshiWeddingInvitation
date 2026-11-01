@@ -1,4 +1,4 @@
-/**
+﻿/**
  * =====================================================================
  * Priyanshi & Abhishek — Wedding Invitation Configuration
  * =====================================================================
@@ -24,6 +24,11 @@ import sliding04 from "../assets/images/sliding_04.jpg";
 import sliding05 from "../assets/images/sliding_05.jpg";
 import sliding06 from "../assets/images/sliding_06.jpg";
 import sliding07 from "../assets/images/sliding_07.jpg";
+import sliding08 from "../assets/images/sliding_08.png";
+import sliding09 from "../assets/images/sliding_09.png";
+import sliding10 from "../assets/images/sliding_10.png";
+import sliding12 from "../assets/images/sliding_12.png";
+import sliding13 from "../assets/images/sliding_13.png";
 import weddingLogo from "../assets/images/wedding_logo.png";
 import saveTheDateBg from "../assets/images/save_the_date_bg.jpg";
 
@@ -115,7 +120,7 @@ export const weddingConfig = {
   story: {
     eyebrow: "Our Journey",
     title: "A Promise Kept",
-    quote: "“Two souls with but a single thought, two hearts that beat as one.”",
+    quote: "“Two souls but a single thought, two hearts that beat as one.”",
     milestones: [
       "Years of companionship, laughter, and growing together",
       "Standing by each other's side through every high and low",
@@ -156,7 +161,7 @@ export const weddingConfig = {
       groomParentsLabel: "सुपुत्र",
       groomParents: "श्री मुकेश पाल - श्रीमती सुनीता पाल",
       brideSideTag: "वधू पक्ष · Bride's Side",
-      brideName: "प्रियंशी शर्मा",
+      brideName: "प्रियांशी शर्मा",
       brideGrandparentsLabel: "सुपौत्री",
       brideGrandparents: "स्व. श्री दामोदर प्रसाद जी शर्मा - स्व. श्रीमती कमलादेवी शर्मा",
       brideParentsLabel: "सुपुत्री",
@@ -598,15 +603,25 @@ export const weddingConfig = {
       { src: sliding05, title: "Sliding Image 05", caption: "Sliding Image 05 — Priyanshi & Abhishek" },
       { src: sliding06, title: "Sliding Image 06", caption: "Sliding Image 06 — Priyanshi & Abhishek" },
       { src: sliding07, title: "Sliding Image 07", caption: "Sliding Image 07 — Priyanshi & Abhishek" },
+      { src: sliding08, title: "Sliding Image 08", caption: "Sliding Image 08 — Priyanshi & Abhishek" },
+      { src: sliding09, title: "Sliding Image 09", caption: "Sliding Image 09 — Priyanshi & Abhishek" },
+      { src: sliding10, title: "Sliding Image 10", caption: "Sliding Image 10 — Priyanshi & Abhishek" },
+      { src: sliding12, title: "Sliding Image 12", caption: "Sliding Image 12 — Priyanshi & Abhishek" },
+      { src: sliding13, title: "Sliding Image 13", caption: "Sliding Image 13 — Priyanshi & Abhishek" },
     ],
     itemsTrack2: [
+      { src: sliding08, title: "Sliding Image 08", caption: "Sliding Image 08 — Priyanshi & Abhishek" },
+      { src: sliding09, title: "Sliding Image 09", caption: "Sliding Image 09 — Priyanshi & Abhishek" },
+      { src: sliding10, title: "Sliding Image 10", caption: "Sliding Image 10 — Priyanshi & Abhishek" },
+      { src: sliding12, title: "Sliding Image 12", caption: "Sliding Image 12 — Priyanshi & Abhishek" },
+      { src: sliding13, title: "Sliding Image 13", caption: "Sliding Image 13 — Priyanshi & Abhishek" },
+      { src: sliding01, title: "Sliding Image 01", caption: "Sliding Image 01 — Priyanshi & Abhishek" },
+      { src: sliding02, title: "Sliding Image 02", caption: "Sliding Image 02 — Priyanshi & Abhishek" },
+      { src: sliding03, title: "Sliding Image 03", caption: "Sliding Image 03 — Priyanshi & Abhishek" },
       { src: sliding04, title: "Sliding Image 04", caption: "Sliding Image 04 — Priyanshi & Abhishek" },
       { src: sliding05, title: "Sliding Image 05", caption: "Sliding Image 05 — Priyanshi & Abhishek" },
       { src: sliding06, title: "Sliding Image 06", caption: "Sliding Image 06 — Priyanshi & Abhishek" },
       { src: sliding07, title: "Sliding Image 07", caption: "Sliding Image 07 — Priyanshi & Abhishek" },
-      { src: sliding01, title: "Sliding Image 01", caption: "Sliding Image 01 — Priyanshi & Abhishek" },
-      { src: sliding02, title: "Sliding Image 02", caption: "Sliding Image 02 — Priyanshi & Abhishek" },
-      { src: sliding03, title: "Sliding Image 03", caption: "Sliding Image 03 — Priyanshi & Abhishek" },
     ],
   },
 

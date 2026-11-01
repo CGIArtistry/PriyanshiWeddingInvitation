@@ -1,4 +1,4 @@
-/* =====================================================================
+﻿/* =====================================================================
    Priyanshi & Abhishek — Cinematic Wedding Invitation Stylesheet
    ===================================================================== */
 
@@ -868,10 +868,11 @@ img {
   inset: 0;
   width: 100%;
   height: 100%;
+  /* Enhanced Royal Palace Courtyard & Golden Bokeh Sunbeams */
   background-image: 
-    radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.45) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(255, 252, 245, 0.12) 0%, rgba(250, 244, 234, 0.35) 55%, rgba(248, 238, 224, 0.94) 100%),
-    url("./assets/images/hero_couple.jpg");
+    radial-gradient(ellipse at 50% 38%, rgba(255, 255, 255, 0.35) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(255, 253, 246, 0.18) 0%, rgba(250, 244, 232, 0.22) 50%, rgba(248, 238, 224, 0.88) 100%),
+    url("./assets/images/hero_enhanced_bg.jpg");
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -976,6 +977,7 @@ img {
   color: var(--deep-navy);
   margin: 0 0 0.8rem;
   line-height: 1.15;
+  text-shadow: 0 2px 14px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.85);
 }
 
 .hero-title .name-abhishek, .hero-title .name-priyanshi {
@@ -1918,8 +1920,41 @@ img {
 }
 
 /* =====================================================================
-   7. Formal Wedding Invitation Card
+   7. Formal Wedding Invitation Card (Royal Palace Heritage Courtyard)
    ===================================================================== */
+.formal-invitation-section {
+  position: relative;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: clamp(5rem, 10vh, 7.5rem) 1.5rem;
+  overflow: hidden;
+}
+
+.formal-section-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+}
+
+.formal-section-bg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Subtle luxury royal veil so formal card text and Lord Ganesha header are 100% readable while the royal palace courtyard is clearly visible */
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(255, 253, 248, 0.45) 0%, rgba(250, 243, 230, 0.72) 55%, rgba(246, 236, 220, 0.92) 100%),
+    linear-gradient(180deg, rgba(250, 245, 237, 0.95) 0%, rgba(250, 243, 230, 0.35) 30%, rgba(250, 243, 230, 0.35) 70%, rgba(248, 238, 224, 0.98) 100%);
+  pointer-events: none;
+}
+
 .section-wrap {
   position: relative;
   max-width: 1100px;
@@ -2573,6 +2608,74 @@ img {
 .ceremony-tab-pill.is-active .tab-pill-label,
 .ceremony-tab-pill.is-active .tab-pill-sub {
   color: #fff;
+}
+
+
+/* =====================================================================
+   8. Ceremony & Celebrations (Dynamic Pointer-Interactive Backgrounds)
+   ===================================================================== */
+.ceremonies-section {
+  position: relative;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: clamp(5rem, 10vh, 7.5rem) 1.5rem;
+  overflow: hidden;
+}
+
+.ceremony-dynamic-bg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ceremony-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.75s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ceremony-bg-layer.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ceremony-bg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Dynamic ceremony veil: allows the ceremony ritual artwork to shine through brightly while keeping the schedule cards and map links crystal clear */
+  background: 
+    radial-gradient(ellipse at 50% 35%, rgba(255, 253, 248, 0.48) 0%, rgba(250, 243, 230, 0.78) 55%, rgba(246, 236, 220, 0.94) 100%),
+    linear-gradient(180deg, rgba(248, 238, 224, 0.96) 0%, rgba(250, 243, 230, 0.45) 25%, rgba(250, 243, 230, 0.45) 75%, rgba(248, 238, 224, 0.98) 100%);
+  pointer-events: none;
+}
+
+.ceremony-content-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.arch-card.is-hovered-ceremony {
+  transform: translateY(-14px) scale(1.025) !important;
+  box-shadow: 0 40px 85px -15px rgba(22, 72, 99, 0.32),
+              0 0 0 2px rgba(214, 163, 71, 0.55),
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 .arch-cards-grid {

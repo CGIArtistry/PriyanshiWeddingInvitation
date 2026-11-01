@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+﻿import React, { useState, useMemo, useEffect } from "react";
 import { CelestialIntro } from "./components/CelestialIntro";
 import { HeroSection } from "./components/HeroSection";
 import { SaveTheDateReveal } from "./components/SaveTheDateReveal";
@@ -50,13 +50,20 @@ export function App() {
   };
 
   // Lightbox photo list for prev/next
-  const allGalleryPhotos = useMemo(
-    () => [
+  const allGalleryPhotos = useMemo(() => {
+    const seen = new Set();
+    const unique = [];
+    [
       ...weddingConfig.gallery.itemsTrack1,
       ...weddingConfig.gallery.itemsTrack2,
-    ],
-    []
-  );
+    ].forEach((p) => {
+      if (!seen.has(p.src)) {
+        seen.add(p.src);
+        unique.push(p);
+      }
+    });
+    return unique;
+  }, []);
 
   const handleNextPhoto = () => {
     if (!selectedPhoto) return;
