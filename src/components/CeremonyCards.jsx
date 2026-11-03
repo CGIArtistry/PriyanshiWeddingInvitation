@@ -18,6 +18,7 @@ const ceremonyBackgrounds = {
   "mata-poojan": bgHaldi,
   "mandap": bgMandap,
   "mamera": bgMamera,
+  "haldi-mehndi": bgHaldi,
   "mahila-sangeet": bgSangeet,
   "sagai": bgSagai,
   "baraat-swagat": bgBaraat,
