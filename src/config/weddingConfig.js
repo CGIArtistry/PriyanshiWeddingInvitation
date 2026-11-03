@@ -53,7 +53,7 @@ export const weddingConfig = {
       parents: "श्री जितेंद्र शर्मा - श्रीमती सीमा शर्मा",
       parentsPlaceholder: "श्री जितेंद्र शर्मा - श्रीमती सीमा शर्मा",
     },
-    monogram: "PA",
+    monogram: "AP",
     hashtag: "#AbhiAnshi",
     secondaryHashtag: "#AbhiAnshi",
   },
@@ -75,7 +75,7 @@ export const weddingConfig = {
   // Celestial Intro Screen Configuration
   intro: {
     badgeText: "WEDDING INVITATION",
-    monogramSeal: "PA",
+    monogramSeal: "AP",
     enterButtonText: "Open Our Invitation",
     enterSubtext: "Click to enter our celebration",
     hintText: "✦ move to scatter starlight · click to enter ✦",

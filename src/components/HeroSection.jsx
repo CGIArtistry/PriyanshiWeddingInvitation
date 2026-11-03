@@ -74,8 +74,8 @@ export const HeroSection = () => {
         title="Tap for love & sparks!"
       >
         <span className="monogram-letters">
-          <span className="monogram-letter monogram-letter-p">P</span>
           <span className="monogram-letter monogram-letter-a">A</span>
+          <span className="monogram-letter monogram-letter-p">P</span>
           
           <span className="monogram-heart" aria-hidden="true">♥</span>
           
