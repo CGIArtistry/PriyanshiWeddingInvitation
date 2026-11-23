@@ -82,18 +82,18 @@ export const RevealBurstCanvas = ({ triggerRef }) => {
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        const age = now - p.born;
-        const progress = age / p.life;
+        const age = Math.max(0, now - p.born);
+        const progress = Math.min(1, age / p.life);
 
         if (progress >= 1) {
           particles.splice(i, 1);
           continue;
         }
 
-        const alpha = 1 - progress;
+        const alpha = Math.max(0, Math.min(1, 1 - progress));
 
         if (p.type === "flash") {
-          const r = p.maxRadius * Math.sin((progress * Math.PI) / 2);
+          const r = Math.max(0.1, p.maxRadius * Math.sin((progress * Math.PI) / 2));
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
           grad.addColorStop(0, `rgba(255, 250, 235, ${alpha * 0.9})`);
           grad.addColorStop(0.5, `rgba(247, 216, 158, ${alpha * 0.4})`);
@@ -103,9 +103,9 @@ export const RevealBurstCanvas = ({ triggerRef }) => {
           ctx.arc(p.x, p.y, r, 0, TAU);
           ctx.fill();
         } else if (p.type === "ring") {
-          const r = p.maxRadius * (1 - Math.pow(1 - progress, 2));
+          const r = Math.max(0.1, p.maxRadius * (1 - Math.pow(1 - progress, 2)));
           ctx.strokeStyle = `rgba(255, 244, 214, ${alpha * 0.85})`;
-          ctx.lineWidth = 3 * alpha + 0.5;
+          ctx.lineWidth = Math.max(0.5, 3 * alpha + 0.5);
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, TAU);
           ctx.stroke();
@@ -113,10 +113,11 @@ export const RevealBurstCanvas = ({ triggerRef }) => {
           const t = age / 1000;
           const currX = p.x + p.vx * t;
           const currY = p.y + p.vy * t + 140 * t * t; // gravity
+          const sparkR = Math.max(0.1, p.radius * alpha + 1);
           ctx.fillStyle = p.color;
           ctx.globalAlpha = alpha;
           ctx.beginPath();
-          ctx.arc(currX, currY, p.radius * alpha + 1, 0, TAU);
+          ctx.arc(currX, currY, sparkR, 0, TAU);
           ctx.fill();
           ctx.globalAlpha = 1;
         }
