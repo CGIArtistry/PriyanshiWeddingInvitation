@@ -6,7 +6,7 @@ export const FloatingNav = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("");
-  const [lang, setLang] = useState("hi");
+  const [lang, setLang] = useState("en");
 
   const { couple } = weddingConfig;
 
@@ -38,7 +38,7 @@ export const FloatingNav = () => {
       setIsVisible(scrollY > 320);
 
       // Active section detection
-      const sections = ["save-the-date", "story", "gallery", "invitation", "events"];
+      const sections = ["save-the-date", "story", "gallery", "invitation", "events", "rsvp"];
       let current = "";
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -97,6 +97,13 @@ export const FloatingNav = () => {
       labelHi: "कार्यक्रम",
       labelEn: "Events",
       icon: <Clock size={14} />,
+    },
+    {
+      id: "rsvp",
+      href: "#rsvp",
+      labelHi: "उपस्थिति",
+      labelEn: "RSVP",
+      icon: <Heart size={14} />,
     },
   ];
 

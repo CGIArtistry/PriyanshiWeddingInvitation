@@ -1,48 +1,115 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { RevealBurstCanvas } from "./canvases/RevealBurstCanvas";
 import { weddingConfig } from "../config/weddingConfig";
-import { Calendar, ChevronDown } from "lucide-react";
+import { Calendar, ChevronDown, MapPin } from "lucide-react";
+
+/**
+ * Robust ISO parser targeting Asia/Kolkata (IST · UTC+05:30)
+ * Eliminates browser-specific Date.parse implementation differences
+ */
+export const parseIsoWithTimezone = (isoString) => {
+  if (!isoString) return 0;
+  const match = String(isoString).match(
+    /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?(?:([+-])(\d{2}):(\d{2})|Z)?$/
+  );
+  if (!match) {
+    return new Date(isoString).getTime();
+  }
+  const [, year, month, day, hour, min, sec, , sign, tzHour, tzMin] = match;
+  const utcMs = Date.UTC(
+    parseInt(year, 10),
+    parseInt(month, 10) - 1,
+    parseInt(day, 10),
+    parseInt(hour, 10),
+    parseInt(min, 10),
+    parseInt(sec, 10)
+  );
+  if (sign && tzHour && tzMin) {
+    const offsetMs =
+      (parseInt(tzHour, 10) * 60 + parseInt(tzMin, 10)) * 60 * 1000;
+    return sign === "+" ? utcMs - offsetMs : utcMs + offsetMs;
+  }
+  // Default to Asia/Kolkata (+05:30) if no offset in string
+  const istOffsetMs = (5 * 60 + 30) * 60 * 1000;
+  return utcMs - istOffsetMs;
+};
+
+/**
+ * Calculates remaining days, hours, minutes, and seconds accurately
+ * Prevents negative countdown values and flags completion
+ */
+export const computeCountdown = (targetTimestamp) => {
+  if (!targetTimestamp) {
+    return {
+      isComplete: false,
+      days: "00",
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+      totalSeconds: 0,
+    };
+  }
+  const now = Date.now();
+  const diff = targetTimestamp - now;
+
+  if (diff <= 0) {
+    return {
+      isComplete: true,
+      days: "00",
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+      totalSeconds: 0,
+    };
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return {
+    isComplete: false,
+    days: String(days).padStart(2, "0"),
+    hours: String(hours).padStart(2, "0"),
+    minutes: String(minutes).padStart(2, "0"),
+    seconds: String(seconds).padStart(2, "0"),
+    totalSeconds,
+  };
+};
 
 export const SaveTheDateReveal = () => {
   const [isRevealed, setIsRevealed] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    days: "--",
-    hours: "--",
-    minutes: "--",
-    seconds: "--",
-  });
+  const [lang, setLang] = useState("en");
   const burstRef = useRef(null);
   const cardRef = useRef(null);
 
   const { couple, weddingDate, saveTheDate } = weddingConfig;
-  const targetTime = new Date(weddingDate.iso).getTime();
+
+  // Language synchronization with global switcher
+  useEffect(() => {
+    const handleSync = (e) => setLang(e.detail);
+    window.addEventListener("wedding-lang-change", handleSync);
+    return () => window.removeEventListener("wedding-lang-change", handleSync);
+  }, []);
+
+  // Parse target timestamp locked to Asia/Kolkata
+  const targetTime = useMemo(
+    () => parseIsoWithTimezone(weddingDate.iso),
+    [weddingDate.iso]
+  );
+
+  // Initialize with exact calculated time (no hardcoded placeholder or delay)
+  const [timeLeft, setTimeLeft] = useState(() => computeCountdown(targetTime));
 
   // Dynamic Live Countdown Timer
   useEffect(() => {
-    const calculateCountdown = () => {
-      const now = Date.now();
-      const diff = targetTime - now;
-
-      if (diff <= 0) {
-        setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      setTimeLeft({
-        days: String(days).padStart(2, "0"),
-        hours: String(hours).padStart(2, "0"),
-        minutes: String(minutes).padStart(2, "0"),
-        seconds: String(seconds).padStart(2, "0"),
-      });
+    const tick = () => {
+      setTimeLeft(computeCountdown(targetTime));
     };
-
-    calculateCountdown();
-    const interval = setInterval(calculateCountdown, 1000);
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, [targetTime]);
 
@@ -74,21 +141,23 @@ export const SaveTheDateReveal = () => {
     card.classList.remove("is-hovered");
   };
 
-  // Google Calendar URL generator
-  const formatIsoForCal = (date) =>
-    date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  // Google Calendar URL generator with accurate UTC dates
+  const formatIsoForCal = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  };
 
   const calendarUrl = (() => {
-    const start = new Date(weddingDate.iso);
-    const end = new Date(start.getTime() + 6 * 60 * 60 * 1000); // 6 hours event
+    const startMs = targetTime;
+    const endMs = startMs + 6 * 60 * 60 * 1000; // 6 hours event
     const title = `Wedding Vivah: ${couple.bride.firstName} & ${couple.groom.firstName}`;
     const location = weddingDate.venuePlaceholder;
-    const details = `You are cordially invited to celebrate the wedding of ${couple.bride.fullName} and ${couple.groom.fullName}.\n\nDate: ${weddingDate.displayDay} ${weddingDate.displayMonth} ${weddingDate.displayYear}\nVenue: ${weddingDate.venuePlaceholder}\n\n${couple.hashtag}`;
+    const details = `You are cordially invited to celebrate the wedding of ${couple.bride.fullName} and ${couple.groom.fullName}.\n\nDate: ${weddingDate.displayDay} ${weddingDate.displayMonth} ${weddingDate.displayYear}\nVenue: ${weddingDate.venuePlaceholder}\nTime: ${weddingDate.timePlaceholder}\n\n${couple.hashtag}`;
 
     const params = new URLSearchParams({
       action: "TEMPLATE",
       text: title,
-      dates: `${formatIsoForCal(start)}/${formatIsoForCal(end)}`,
+      dates: `${formatIsoForCal(startMs)}/${formatIsoForCal(endMs)}`,
       details,
       location,
     });
@@ -104,7 +173,9 @@ export const SaveTheDateReveal = () => {
         <h2 className="main-heading">{saveTheDate.title}</h2>
         <p className="italic-note">
           {isRevealed
-            ? "Mark your calendar and join us as we celebrate our new beginning"
+            ? (lang === "hi"
+                ? "शुभ घड़ी निकट है, हमारे इस पावन उत्सव में पधारकर हमें अनुगृहीत करें"
+                : "Mark your calendar and join us as we celebrate our new beginning")
             : saveTheDate.hintBeforeReveal}
         </p>
       </div>
@@ -176,44 +247,106 @@ export const SaveTheDateReveal = () => {
               )}
             </p>
 
-            {/* Dynamic Live Countdown Card */}
-            <div
-              className="countdown-card"
-              ref={cardRef}
-              onMouseMove={handleCountdownMouseMove}
-              onMouseLeave={handleCountdownMouseLeave}
-            >
-              <div className="timer-unit">
-                <span className="timer-num">{timeLeft.days}</span>
-                <span className="timer-label">DAYS</span>
+            {/* Dynamic Live Countdown Card or Completed State */}
+            {timeLeft.isComplete ? (
+              <div className="countdown-completed-state" ref={cardRef}>
+                <div className="completed-emblem" aria-hidden="true">
+                  <span className="completed-sparkle">✦</span>
+                  <span className="completed-lotus">🪷</span>
+                  <span className="completed-sparkle">✦</span>
+                </div>
+                <div className="completed-shloka">
+                  {lang === "hi"
+                    ? "॥ श्री गणेशाय नमः · पावन विवाह उत्सव ॥"
+                    : "॥ Sacred Vivah Celebration ॥"}
+                </div>
+                <h4 className="completed-heading">
+                  {lang === "hi"
+                    ? "विवाह उत्सव प्रारम्भ हो चुका है!"
+                    : "The Wedding Celebration Has Begun!"}
+                </h4>
+                <p className="completed-subtext">
+                  {lang === "hi"
+                    ? "प्रियांशी एवं अभिषेक का पावन विवाह समारोह सृष्टि रिसॉर्ट्स एंड क्लब, देवास में आरम्भ हो चुका है। आप सभी का सस्नेह स्वागत है।"
+                    : "The royal wedding celebration of Priyanshi & Abhishek is underway at Srishti Resort & Club, Dewas. Welcome to the celebration!"}
+                </p>
+                <div className="completed-badge">
+                  <span className="completed-live-dot" aria-hidden="true" />
+                  <span>
+                    {lang === "hi"
+                      ? "समारोह जारी है · सृष्टि क्लब, देवास"
+                      : "Celebration Underway · Srishti Club, Dewas"}
+                  </span>
+                </div>
               </div>
-              <div className="timer-unit">
-                <span className="timer-num">{timeLeft.hours}</span>
-                <span className="timer-label">HOURS</span>
+            ) : (
+              <div
+                className="countdown-card"
+                ref={cardRef}
+                onMouseMove={handleCountdownMouseMove}
+                onMouseLeave={handleCountdownMouseLeave}
+              >
+                <div className="countdown-timezone-tag">
+                  <span className="tz-dot" aria-hidden="true" />
+                  <span>
+                    {lang === "hi"
+                      ? "भारतीय मानक समय · Asia/Kolkata (IST · UTC+05:30)"
+                      : "Indian Standard Time · Asia/Kolkata (IST · UTC+05:30)"}
+                  </span>
+                </div>
+
+                <div className="timer-unit">
+                  <span className="timer-num">{timeLeft.days}</span>
+                  <span className="timer-label">{lang === "hi" ? "दिन" : "DAYS"}</span>
+                </div>
+                <div className="timer-unit">
+                  <span className="timer-num">{timeLeft.hours}</span>
+                  <span className="timer-label">{lang === "hi" ? "घंटे" : "HOURS"}</span>
+                </div>
+                <div className="timer-unit">
+                  <span className="timer-num">{timeLeft.minutes}</span>
+                  <span className="timer-label">{lang === "hi" ? "मिनट" : "MINS"}</span>
+                </div>
+                <div className="timer-unit">
+                  <span className="timer-num">{timeLeft.seconds}</span>
+                  <span className="timer-label">{lang === "hi" ? "सेकंड" : "SECS"}</span>
+                </div>
               </div>
-              <div className="timer-unit">
-                <span className="timer-num">{timeLeft.minutes}</span>
-                <span className="timer-label">MINS</span>
-              </div>
-              <div className="timer-unit">
-                <span className="timer-num">{timeLeft.seconds}</span>
-                <span className="timer-label">SECS</span>
-              </div>
-            </div>
+            )}
 
             <div className="btn-row">
-              <a
-                className="promise-highlight-btn"
-                href={calendarUrl}
-                target="_blank"
-                rel="noreferrer"
-                title="Add to Google Calendar"
-              >
-                <Calendar size={16} /> Add to Calendar
-              </a>
-              <a className="promise-highlight-btn secondary" href="#events">
-                <ChevronDown size={16} /> {saveTheDate.buttonItinerary}
-              </a>
+              {timeLeft.isComplete ? (
+                <>
+                  <a className="promise-highlight-btn" href="#events">
+                    <ChevronDown size={16} /> {lang === "hi" ? "विवाह कार्यक्रम देखें" : "View Wedding Itinerary"}
+                  </a>
+                  {weddingDate.mapUrl && (
+                    <a
+                      className="promise-highlight-btn secondary"
+                      href={weddingDate.mapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <MapPin size={16} /> {lang === "hi" ? "सृष्टि क्लब मैप्स देखें" : "Venue Directions"}
+                    </a>
+                  )}
+                </>
+              ) : (
+                <>
+                  <a
+                    className="promise-highlight-btn"
+                    href={calendarUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Add to Google Calendar"
+                  >
+                    <Calendar size={16} /> {lang === "hi" ? "कैलेंडर में जोड़ें" : "Add to Calendar"}
+                  </a>
+                  <a className="promise-highlight-btn secondary" href="#events">
+                    <ChevronDown size={16} /> {saveTheDate.buttonItinerary}
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}

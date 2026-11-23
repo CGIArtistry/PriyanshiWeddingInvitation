@@ -34,7 +34,7 @@ const ceremonyBackgrounds = {
 export const CeremonyCards = () => {
   const { events, couple, eventsSection } = weddingConfig;
   const [activeDay, setActiveDay] = useState("all");
-  const [lang, setLang] = useState("hi");
+  const [lang, setLang] = useState("en");
   const [hoveredEventId, setHoveredEventId] = useState(null);
 
   // Listen for language synchronization from FormalCard or global toggle

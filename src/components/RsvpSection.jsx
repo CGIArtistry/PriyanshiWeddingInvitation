@@ -3,7 +3,7 @@ import { Send, Heart, Phone, Sparkles } from "lucide-react";
 import { weddingConfig } from "../config/weddingConfig";
 
 export const RsvpSection = () => {
-  const [lang, setLang] = useState("hi");
+  const [lang, setLang] = useState("en");
   const [formData, setFormData] = useState({
     name: "",
     attendance: "attending",
@@ -22,10 +22,39 @@ export const RsvpSection = () => {
     return () => window.removeEventListener("wedding-lang-change", handleSync);
   }, []);
 
+  // Restore persisted RSVP from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("wedding_rsvp_submission");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.name) {
+          setFormData(parsed);
+          setSubmitted(true);
+        }
+      }
+    } catch (err) {
+      console.warn("Could not retrieve saved RSVP from localStorage:", err);
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name) return;
+    const payload = {
+      ...formData,
+      submittedAt: new Date().toISOString(),
+    };
+    try {
+      localStorage.setItem("wedding_rsvp_submission", JSON.stringify(payload));
+    } catch (err) {
+      console.warn("Could not persist RSVP to localStorage:", err);
+    }
     setSubmitted(true);
+  };
+
+  const handleEdit = () => {
+    setSubmitted(false);
   };
 
   const { contacts } = weddingConfig;
@@ -45,7 +74,7 @@ export const RsvpSection = () => {
       guest2: "2 व्यक्ति (2 Persons)",
       guest3: "3 व्यक्ति (3 Persons)",
       guest4: "4+ सपरिवार (Family)",
-      messageLabel: "अभिषेक एवं प्रियांशी के लिए मंगल आशीष व संदेश",
+      messageLabel: "प्रियांशी एवं अभिषेक के लिए मंगल आशीष व संदेश",
       messagePlaceholder: "वर-वधू के लिए शुभकामना संदेश लिखें...",
       submitBtn: "आशीर्वाद संदेश भेजें",
       thankTitle: "हार्दिक धन्यवाद",
@@ -95,6 +124,54 @@ export const RsvpSection = () => {
             <Heart size={40} color="#b68d40" style={{ margin: "0 auto 1rem", display: "block" }} />
             <h3>{t.thankTitle}, <strong>{formData.name}</strong>!</h3>
             <p>{t.thankMessage}</p>
+            <div
+              className="rsvp-summary"
+              style={{
+                margin: "1.2rem auto",
+                padding: "1rem 1.4rem",
+                background: "rgba(255,255,255,0.78)",
+                borderRadius: "14px",
+                maxWidth: "420px",
+                fontSize: "0.92rem",
+                textAlign: "left",
+                border: "1px solid rgba(182, 141, 64, 0.25)",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+              }}
+            >
+              <div style={{ marginBottom: "6px" }}>
+                <strong>{t.attendanceLabel}:</strong>{" "}
+                <span style={{ color: formData.attendance === "attending" ? "#1e6b37" : "#843030" }}>
+                  {formData.attendance === "attending" ? t.attendingOption : t.unableOption}
+                </span>
+              </div>
+              <div style={{ marginBottom: "6px" }}>
+                <strong>{t.guestsLabel}:</strong> {formData.guests}
+              </div>
+              {formData.message && (
+                <div style={{ marginTop: "8px", fontStyle: "italic", color: "#334155" }}>
+                  <strong>{t.messageLabel}:</strong> &ldquo;{formData.message}&rdquo;
+                </div>
+              )}
+            </div>
+            <button
+              type="button"
+              className="rsvp-edit-btn"
+              onClick={handleEdit}
+              style={{
+                background: "transparent",
+                border: "1px solid #b68d40",
+                color: "#8a6627",
+                padding: "8px 20px",
+                borderRadius: "24px",
+                cursor: "pointer",
+                fontSize: "0.88rem",
+                fontWeight: 600,
+                marginTop: "0.6rem",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {lang === "hi" ? "उत्तर सम्पादित करें (Edit RSVP)" : "Edit RSVP Response"}
+            </button>
           </div>
         ) : (
           <form className="rsvp-form-grid" onSubmit={handleSubmit}>

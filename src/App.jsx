@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { CelestialIntro } from "./components/CelestialIntro";
 import { HeroSection } from "./components/HeroSection";
 import { SaveTheDateReveal } from "./components/SaveTheDateReveal";
@@ -6,6 +6,7 @@ import { OurStory } from "./components/OurStory";
 import { GalleryCarousel } from "./components/GalleryCarousel";
 import { FormalCard } from "./components/FormalCard";
 import { CeremonyCards } from "./components/CeremonyCards";
+import { RsvpSection } from "./components/RsvpSection";
 import { HeavenlyFinale } from "./components/HeavenlyFinale";
 import { AudioPlayer } from "./components/AudioPlayer";
 import { LightboxModal } from "./components/LightboxModal";
@@ -165,6 +166,9 @@ export function App() {
 
             {/* 8. Ceremony & Celebration Cards */}
             <CeremonyCards />
+
+            {/* 8b. RSVP & Warm Blessings Section */}
+            <RsvpSection />
 
             {/* 9. Heavenly Finale & Footer */}
             <HeavenlyFinale />

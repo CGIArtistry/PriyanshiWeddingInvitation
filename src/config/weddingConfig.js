@@ -32,6 +32,41 @@ import sliding13 from "../assets/images/sliding_13.png";
 import weddingLogo from "../assets/images/wedding_logo.png";
 import saveTheDateBg from "../assets/images/save_the_date_bg.jpg";
 
+// Pre-wedding photoshoot images
+import img0220 from "../assets/images/IMG_0220_A.jpg";
+import img0232 from "../assets/images/IMG_0232_A.jpg";
+import img0238 from "../assets/images/IMG_0238_A.jpg";
+import img0263 from "../assets/images/IMG_0263_A.jpg";
+import img0290 from "../assets/images/IMG_0290_A.jpg";
+import img0309 from "../assets/images/IMG_0309_A.jpg";
+import img0320 from "../assets/images/IMG_0320_A.jpg";
+import img0353 from "../assets/images/IMG_0353_A.jpg";
+import img0375 from "../assets/images/IMG_0375_A.jpg";
+import img0402 from "../assets/images/IMG_0402_A.jpg";
+import img0414 from "../assets/images/IMG_0414_A.jpg";
+import img0451 from "../assets/images/IMG_0451_A.jpg";
+import img0463 from "../assets/images/IMG_0463_A.jpg";
+import img0474 from "../assets/images/IMG_0474_A.jpg";
+import img0493 from "../assets/images/IMG_0493_A.jpg";
+import img0508 from "../assets/images/IMG_0508_A.jpg";
+import img0534 from "../assets/images/IMG_0534_A.jpg";
+import img0585 from "../assets/images/IMG_0585_A1.jpg";
+import img0601 from "../assets/images/IMG_0601_A.jpg";
+import img0612 from "../assets/images/IMG_0612_A.jpg";
+import img0648 from "../assets/images/IMG_0648_A.jpg";
+import img0663 from "../assets/images/IMG_0663_A.jpg";
+import img0669 from "../assets/images/IMG_0669_A1.jpg";
+import img0703 from "../assets/images/IMG_0703_A.jpg";
+import img0777 from "../assets/images/IMG_0777_A.jpg";
+import imgE0381 from "../assets/images/IMG_E0381_A.jpg";
+import imgE0570 from "../assets/images/IMG_E0570_A.jpg";
+import imgE0586 from "../assets/images/IMG_E0586_A.jpg";
+import imgE0827 from "../assets/images/IMG_E0827_A.jpg";
+import imgE0927 from "../assets/images/IMG_E0927_A.jpg";
+import imgP0001 from "../assets/images/IMG_P0001_A.jpg";
+import imgP0002 from "../assets/images/IMG_P0002_A.jpg";
+import imgP0003 from "../assets/images/IMG_P0003_A.jpg";
+
 export const weddingConfig = {
   // Couple & Family Lineage
   couple: {
@@ -82,16 +117,16 @@ export const weddingConfig = {
     centralPhoto: bubbleCouple,
     // Orbital floating framed photographs (10 frames at varying parallax depths)
     orbitalFrames: [
-      { id: 1, src: sliding02, depth: 0.55, tilt: "-4deg", delay: "0s", posVar: "--at-a" },
-      { id: 2, src: sliding03, depth: 0.8, tilt: "3.4deg", delay: "-2.1s", posVar: "--at-b" },
-      { id: 3, src: sliding01, depth: 1.1, tilt: "-3deg", delay: "-3.6s", posVar: "--at-c" },
-      { id: 4, src: galleryHaldi, depth: 1.45, tilt: "4deg", delay: "-5.2s", posVar: "--at-d" },
-      { id: 5, src: sliding05, depth: 1.8, tilt: "-2.4deg", delay: "-6.8s", posVar: "--at-e" },
-      { id: 6, src: sliding06, depth: 2.2, tilt: "3.2deg", delay: "-1.4s", posVar: "--at-f" },
-      { id: 7, src: galleryMandap, depth: 2.7, tilt: "-4.4deg", delay: "-8.3s", posVar: "--at-g" },
-      { id: 8, src: sliding07, depth: 3.2, tilt: "2.2deg", delay: "-4.6s", posVar: "--at-h" },
-      { id: 9, src: sliding04, depth: 3.8, tilt: "-3.6deg", delay: "-7.7s", posVar: "--at-i" },
-      { id: 10, src: storyTwo, depth: 4.4, tilt: "3.8deg", delay: "-3s", posVar: "--at-j" },
+      { id: 1, src: img0220, depth: 0.55, tilt: "-4deg", delay: "0s", posVar: "--at-a" },
+      { id: 2, src: img0232, depth: 0.8, tilt: "3.4deg", delay: "-2.1s", posVar: "--at-b" },
+      { id: 3, src: img0238, depth: 1.1, tilt: "-3deg", delay: "-3.6s", posVar: "--at-c" },
+      { id: 4, src: img0263, depth: 1.45, tilt: "4deg", delay: "-5.2s", posVar: "--at-d" },
+      { id: 5, src: img0290, depth: 1.8, tilt: "-2.4deg", delay: "-6.8s", posVar: "--at-e" },
+      { id: 6, src: img0309, depth: 2.2, tilt: "3.2deg", delay: "-1.4s", posVar: "--at-f" },
+      { id: 7, src: img0320, depth: 2.7, tilt: "-4.4deg", delay: "-8.3s", posVar: "--at-g" },
+      { id: 8, src: img0353, depth: 3.2, tilt: "2.2deg", delay: "-4.6s", posVar: "--at-h" },
+      { id: 9, src: img0375, depth: 3.8, tilt: "-3.6deg", delay: "-7.7s", posVar: "--at-i" },
+      { id: 10, src: imgP0001, depth: 4.4, tilt: "3.8deg", delay: "-3s", posVar: "--at-j" },
     ],
   },
 
@@ -128,12 +163,12 @@ export const weddingConfig = {
     ],
     closingMessage: "We are overjoyed to begin this new chapter together.",
     photo1: {
-      src: storyOne,
+      src: imgP0002,
       alt: "Priyanshi & Abhishek - Our First Chapter",
       caption: "A Promise Made",
     },
     photo2: {
-      src: storyTwo,
+      src: img0493,
       alt: "Priyanshi & Abhishek - Wedding Day",
       caption: "A Promise Kept",
     },
@@ -638,32 +673,41 @@ export const weddingConfig = {
     title: "Our Journey In Frames",
     subtitle: "Every smile, every glance, and the moments we will treasure forever",
     itemsTrack1: [
-      { src: sliding01, title: "Sliding Image 01", caption: "Sliding Image 01 — Priyanshi & Abhishek" },
-      { src: sliding02, title: "Sliding Image 02", caption: "Sliding Image 02 — Priyanshi & Abhishek" },
-      { src: sliding03, title: "Sliding Image 03", caption: "Sliding Image 03 — Priyanshi & Abhishek" },
-      { src: sliding04, title: "Sliding Image 04", caption: "Sliding Image 04 — Priyanshi & Abhishek" },
-      { src: sliding05, title: "Sliding Image 05", caption: "Sliding Image 05 — Priyanshi & Abhishek" },
-      { src: sliding06, title: "Sliding Image 06", caption: "Sliding Image 06 — Priyanshi & Abhishek" },
-      { src: sliding07, title: "Sliding Image 07", caption: "Sliding Image 07 — Priyanshi & Abhishek" },
-      { src: sliding08, title: "Sliding Image 08", caption: "Sliding Image 08 — Priyanshi & Abhishek" },
-      { src: sliding09, title: "Sliding Image 09", caption: "Sliding Image 09 — Priyanshi & Abhishek" },
-      { src: sliding10, title: "Sliding Image 10", caption: "Sliding Image 10 — Priyanshi & Abhishek" },
-      { src: sliding12, title: "Sliding Image 12", caption: "Sliding Image 12 — Priyanshi & Abhishek" },
-      { src: sliding13, title: "Sliding Image 13", caption: "Sliding Image 13 — Priyanshi & Abhishek" },
+      { src: img0220, title: "Pre-Wedding Celebration", caption: "Priyanshi & Abhishek — Cherished Moments" },
+      { src: img0232, title: "Timeless Togetherness", caption: "Priyanshi & Abhishek — Eternal Promise" },
+      { src: img0238, title: "Endless Smiles", caption: "Priyanshi & Abhishek — Beautiful Journey" },
+      { src: img0263, title: "Hand in Hand", caption: "Priyanshi & Abhishek — Forever Connected" },
+      { src: img0290, title: "Romantic Serenade", caption: "Priyanshi & Abhishek — Two Hearts as One" },
+      { src: img0309, title: "Golden Hour Glow", caption: "Priyanshi & Abhishek — Sunlit Romance" },
+      { src: img0320, title: "Gaze of Love", caption: "Priyanshi & Abhishek — Silent Whispers" },
+      { src: img0353, title: "Gentle Embrace", caption: "Priyanshi & Abhishek — Pure Affection" },
+      { src: img0375, title: "Sacred Bond", caption: "Priyanshi & Abhishek — Blessed Journey" },
+      { src: img0402, title: "Joyous Reverie", caption: "Priyanshi & Abhishek — Radiant Laughter" },
+      { src: img0414, title: "Royal Elegance", caption: "Priyanshi & Abhishek — Majestic Harmony" },
+      { src: img0451, title: "Sweet Companionship", caption: "Priyanshi & Abhishek — A Lifetime of Love" },
+      { src: img0463, title: "Starlight Promise", caption: "Priyanshi & Abhishek — Under the Sky" },
+      { src: img0474, title: "Serene Romance", caption: "Priyanshi & Abhishek — Peace and Love" },
+      { src: img0493, title: "Vows of Tomorrow", caption: "Priyanshi & Abhishek — Our Forever" },
+      { src: img0508, title: "Destined Together", caption: "Priyanshi & Abhishek — Written in Stars" },
+      { src: img0534, title: "Warm Affection", caption: "Priyanshi & Abhishek — Heart to Heart" },
     ],
     itemsTrack2: [
-      { src: sliding08, title: "Sliding Image 08", caption: "Sliding Image 08 — Priyanshi & Abhishek" },
-      { src: sliding09, title: "Sliding Image 09", caption: "Sliding Image 09 — Priyanshi & Abhishek" },
-      { src: sliding10, title: "Sliding Image 10", caption: "Sliding Image 10 — Priyanshi & Abhishek" },
-      { src: sliding12, title: "Sliding Image 12", caption: "Sliding Image 12 — Priyanshi & Abhishek" },
-      { src: sliding13, title: "Sliding Image 13", caption: "Sliding Image 13 — Priyanshi & Abhishek" },
-      { src: sliding01, title: "Sliding Image 01", caption: "Sliding Image 01 — Priyanshi & Abhishek" },
-      { src: sliding02, title: "Sliding Image 02", caption: "Sliding Image 02 — Priyanshi & Abhishek" },
-      { src: sliding03, title: "Sliding Image 03", caption: "Sliding Image 03 — Priyanshi & Abhishek" },
-      { src: sliding04, title: "Sliding Image 04", caption: "Sliding Image 04 — Priyanshi & Abhishek" },
-      { src: sliding05, title: "Sliding Image 05", caption: "Sliding Image 05 — Priyanshi & Abhishek" },
-      { src: sliding06, title: "Sliding Image 06", caption: "Sliding Image 06 — Priyanshi & Abhishek" },
-      { src: sliding07, title: "Sliding Image 07", caption: "Sliding Image 07 — Priyanshi & Abhishek" },
+      { src: img0585, title: "Cherished Promise", caption: "Priyanshi & Abhishek — Precious Memories" },
+      { src: img0601, title: "Laughter and Light", caption: "Priyanshi & Abhishek — Boundless Joy" },
+      { src: img0612, title: "Moments of Grace", caption: "Priyanshi & Abhishek — Tender Elegance" },
+      { src: img0648, title: "Eternal Symphony", caption: "Priyanshi & Abhishek — Music of the Heart" },
+      { src: img0663, title: "Whispering Breeze", caption: "Priyanshi & Abhishek — In Each Other's Arms" },
+      { src: img0669, title: "Enchanted Twilight", caption: "Priyanshi & Abhishek — Magic in Twilight" },
+      { src: img0703, title: "Radiant Journey", caption: "Priyanshi & Abhishek — Walking Together" },
+      { src: img0777, title: "Infinite Devotion", caption: "Priyanshi & Abhishek — Unconditional Love" },
+      { src: imgE0381, title: "Magic in the Air", caption: "Priyanshi & Abhishek — Dreams Come True" },
+      { src: imgE0570, title: "Soulmate Connection", caption: "Priyanshi & Abhishek — Joined by Destiny" },
+      { src: imgE0586, title: "Golden Horizon", caption: "Priyanshi & Abhishek — Beautiful Future" },
+      { src: imgE0827, title: "Joy Unfolding", caption: "Priyanshi & Abhishek — Smiles of Forever" },
+      { src: imgE0927, title: "Love's Gentle Touch", caption: "Priyanshi & Abhishek — Soft Whispers" },
+      { src: imgP0001, title: "Beautiful Destiny", caption: "Priyanshi & Abhishek — Our New Beginning" },
+      { src: imgP0002, title: "A Promise Made", caption: "Priyanshi & Abhishek — First Chapter" },
+      { src: imgP0003, title: "A Promise Kept", caption: "Priyanshi & Abhishek — Timeless Union" },
     ],
   },
 

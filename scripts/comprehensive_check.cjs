@@ -115,3 +115,4 @@ console.log(`RESULT: ${passCount}/20 CHECKS PASSED, ${failCount} FAILED`);
 console.log('=======================================================');
 
 if (failCount > 0) process.exit(1);
+

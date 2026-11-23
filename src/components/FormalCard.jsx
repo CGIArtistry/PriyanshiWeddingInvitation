@@ -1,11 +1,11 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { weddingConfig } from "../config/weddingConfig";
 import { MapPin, Clock, Calendar, Phone, Languages } from "lucide-react";
 import bgFormalInvitation from "../assets/images/bg_formal_invitation.jpg";
 
 export const FormalCard = () => {
   const { formalCard } = weddingConfig;
-  const [lang, setLang] = useState("hi");
+  const [lang, setLang] = useState("en");
 
   React.useEffect(() => {
     const handleSync = (e) => {
