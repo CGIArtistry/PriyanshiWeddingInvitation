@@ -229,7 +229,7 @@ export const weddingConfig = {
       brideSideTag: "Bride's Family",
       brideName: "Priyanshi Sharma",
       brideGrandparentsLabel: "Granddaughter of",
-      brideGrandparents: "Late Shri Damodar Prasad Sharma & Late Smt. Kamladevi Sharma",
+      brideGrandparents: "Late Shri Damodar Prasad Ji Sharma & Late Smt. Kamladevi Sharma",
       brideParentsLabel: "Daughter of",
       brideParents: "Shri Jitendra Sharma & Smt. Seema Sharma",
       wedsLigature: "Weds",
